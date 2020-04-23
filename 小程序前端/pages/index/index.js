@@ -83,8 +83,8 @@ Page({
     var username = that.data.username2
     console.log(username)
     wx.request({
-      url: 'https://www.ben123123.club:8080/api',
-      // url: 'http://127.0.0.1:5000/api', //这个本地，上面是联网
+      // url: 'https://www.ben123123.club:8080/api',
+      url: 'http://127.0.0.1:5000/api', //这个本地，上面是联网
       data: {
         "jsonrpc": "2.0",
         "id": 1,

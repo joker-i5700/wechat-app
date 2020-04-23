@@ -1,11 +1,15 @@
 from application import jsonrpc
 from flask import render_template, g, request, flash, redirect, url_for, json, jsonify
 from flask.json import JSONEncoder
-from .models import Users, Department, db
+from .models import Users, Department, UsersWechart, db
 from sqlalchemy import or_
 import hashlib
 
-
+@jsonrpc.method("User.login(data=dict)")
+def user_login(data):
+    print("=========================")
+    print(data)
+    return data
 @jsonrpc.method("User.list(username=String)")
 def user_list(username):
     """
@@ -16,6 +20,7 @@ def user_list(username):
     :return: 返回除密码外的全部用户信息
     """
     # 校验用户是否存在
+    print("=========================")
     username = username["username"]
     user_jc = Users.query.filter(Users.username == username).all()
     if len(user_jc) <= 0:

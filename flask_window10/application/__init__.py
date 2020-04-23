@@ -8,6 +8,9 @@ from flask_jsonrpc import JSONRPC
 import logging
 from logging.handlers import RotatingFileHandler
 
+from flask_restful import Api
+from application.apps.api.api_restful import TodoList, Todo, TaskList, UserLogin
+
 config = {
     "dev": DevelopementConfig,
     "prop": ProductionConfig,
@@ -75,4 +78,23 @@ def init_app(config_name):
     # from .apps.index import index_blu
     # app.register_blueprint(index_blu, url_prefix='')
 
+    # 设置restful
+    api_restful(app)
+
     return app
+
+def api_restful(app):
+    """create restful api"""
+    api = Api(app)
+    ##
+    # Actually setup the Api resource routing here
+    ##
+    api.add_resource(TodoList, '/todos')
+    api.add_resource(Todo, '/todos/<todo_id>')
+    api.add_resource(TaskList, '/tasks')
+
+    # for wechart
+    api.add_resource(UserLogin, '/UserLogin')
+
+
+    return None

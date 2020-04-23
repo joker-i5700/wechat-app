@@ -29,8 +29,8 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://www.ben123123.club:8080/api',
-      // url: 'http://127.0.0.1:5000/api',
+      // url: 'https://www.ben123123.club:8080/api',
+      url: 'http://127.0.0.1:5000/api',
       data: {
         "jsonrpc": "2.0",
         "id": 1,

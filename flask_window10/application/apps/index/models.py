@@ -27,3 +27,16 @@ class Users(BaseModel, db.Model):
     password = db.Column(db.String(64), index=True, comment="密码")
     mobile = db.Column(db.String(64), index=True, comment="手机")
     department_id = db.Column(db.Integer, db.ForeignKey("department.id"), comment="部门ID")
+
+class UsersWechart(BaseModel, db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True, comment="")
+    uid = db.Column(db.String(128), nullable=False, comment="用户openid")
+    uname = db.Column(db.String(40), comment="用户微信名")
+    ugender = db.Column(db.SmallInteger, comment="用户性别")
+    uaddress = db.Column(db.String(128), comment="用户地址")
+    ubalance = db.Column(db.Integer, comment="用户积分余额")
+    uavatar = db.Column(db.String(256), comment="用户头像引用地址")
+    skey = db.Column(db.String(128), nullable=False, comment="用户登录态标识")
+    sessionkey = db.Column(db.String(128), nullable=False, comment="微信登录态标识")
+

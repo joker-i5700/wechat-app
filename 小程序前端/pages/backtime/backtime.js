@@ -42,8 +42,8 @@ Page({
   onShow: function () {
     var that = this; //这里需要用that，因为下面是回调，this会失效
     wx.request({
-      // url: 'http://127.0.0.1:5000/api',
-      url: 'https://www.ben123123.club:8080/api',
+      url: 'http://127.0.0.1:5000/api',
+      // url: 'https://www.ben123123.club:8080/api',
       data: {
         "jsonrpc": "2.0",
         "id": 1,
@@ -135,8 +135,8 @@ Page({
       // 下面又是关于回调，所以先将this.data赋值给新的data
       var data = this.data;
       wx.request({
-        url: 'https://www.ben123123.club:8080/api',
-        // url: 'http://127.0.0.1:5000/api',
+        // url: 'https://www.ben123123.club:8080/api',
+        url: 'http://127.0.0.1:5000/api',
         data: {
           "jsonrpc": "2.0",
           "id": 1,

@@ -23,6 +23,7 @@ Page({
  * 生命周期函数--监听页面显示
  */
   onShow: function () {
+    console.log('in checkall onshow')
     try {
       var value = wx.getStorageSync('key')
       var username = value
@@ -37,8 +38,8 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://www.ben123123.club:8080/api',
-      // url: 'http://127.0.0.1:5000/api',
+      // url: 'https://www.ben123123.club:8080/api',
+      url: 'http://127.0.0.1:5000/api',
       data: {
         "jsonrpc": "2.0",
         "id": 1,

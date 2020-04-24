@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b04afc18-3327-484f-866a-94ea556be26f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../小程序前端/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/pages/backtime/backtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/pages/backtime/backtime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/pages/checkall/checkall.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/pages/checkall/checkall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/pages/checkinfo/checkinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/pages/checkinfo/checkinfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/pages/checkother/checkother.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/pages/checkother/checkother.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/pages/edit/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/pages/edit/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../小程序前端/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../小程序前端/project.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/project.config.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,10 +75,10 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Python36/Scripts/autopep8.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -209,6 +201,8 @@
       <workItem from="1587636699522" duration="5947000" />
       <workItem from="1587643569497" duration="5820000" />
       <workItem from="1587657980123" duration="1838000" />
+      <workItem from="1587703874750" duration="11457000" />
+      <workItem from="1587730830269" duration="4790000" />
     </task>
     <servers />
   </component>
@@ -236,16 +230,23 @@
           <line>71</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/application/apps/index/api.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="request" language="Python" />
+        <watch expression="resp" language="Python" />
+        <watch expression="resp[&quot;session_key&quot;]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_window10$manage.coverage" NAME="manage Coverage Results" MODIFIED="1587657749379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_window10$manage.coverage" NAME="manage Coverage Results" MODIFIED="1587740633836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_work$manage.coverage" NAME="manage Coverage Results" MODIFIED="1560168523505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_work$main.coverage" NAME="main Coverage Results" MODIFIED="1560167396302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

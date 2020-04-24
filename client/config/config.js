@@ -1,5 +1,8 @@
 // 服务器域名
-const baseUrl 			= 'http://127.0.0.1:3003/';
+const baseUrl 			= 'http://127.0.0.1:5000/';
+
+const jsonRpcUrl   = baseUrl + 'api';
+
 // 获取书籍信息接口地址(可选择全部或单个书籍)
 const getBooksUrl 		= baseUrl + 'api/book/getBooks';
 // 写评论接口
@@ -15,6 +18,7 @@ const buyBookUrl = baseUrl + 'api/order/buy';
 
 
 module.exports = {
+	jsonRpcUrl:   jsonRpcUrl,
 	getBooksUrl: 		getBooksUrl,
 	commentUrl: 		commentUrl,
 	queryBookUrl: 		queryBookUrl,

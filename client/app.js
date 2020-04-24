@@ -64,21 +64,31 @@ App({
                         
                         success: function (infoRes) {
                             console.log(infoRes,'>>>')
-                            // 请求服务端的登录接口
+                            // 请求服务端的登录接口 -- jsonrpc请求
                             wx.request({
-                                url: api.loginUrl,
-
+                                url: api.jsonRpcUrl,
                                 data: {
-                                    code: loginRes.code,                    // 临时登录凭证
-                                    rawData: infoRes.rawData,               // 用户非敏感信息
-                                    signature: infoRes.signature,           // 签名
-                                    encryptedData: infoRes.encryptedData,   // 用户敏感信息
-                                    iv: infoRes.iv                          // 解密算法的向量
+                                  "jsonrpc": "2.0",
+                                  "id": 1,
+                                  "method": "User.login",
+                                  "params": {
+                                    "data" :{
+                                      code: loginRes.code,                    // 临时登录凭证
+                                      rawData: infoRes.rawData,               // 用户非敏感信息
+                                      signature: infoRes.signature,           // 签名
+                                      encryptedData: infoRes.encryptedData,   // 用户敏感信息
+                                      iv: infoRes.iv                          // 解密算法的向量
+                                    }
+                                  }
                                 },
+                                header: {},
+                                method: 'POST',
+                                dataType: 'json',
+                                responseType: 'text',
 
                                 success: function (res) {
                                     console.log('login success');
-                                    res = res.data;
+                                    res = res.data.result;
 
                                     if (res.result == 0) {
                                         that.globalData.userInfo = res.userInfo;

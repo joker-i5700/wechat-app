@@ -1,15 +1,84 @@
 from application import jsonrpc
+import requests
+from Crypto.Cipher import AES
+from binascii import b2a_hex, a2b_hex
+from application.utils.AESCipher import AESCipher
+from application.utils.WXBizDataCrypt import WXBizDataCrypt
 from flask import render_template, g, request, flash, redirect, url_for, json, jsonify
 from flask.json import JSONEncoder
 from .models import Users, Department, UsersWechart, db
 from sqlalchemy import or_
 import hashlib
+import base64
+
+# 前端小程序配置信息
+appConfig = {"appid": 'wxf34553e9cd1d35dd',
+             "secret": '25d844c5c1445e15cecd9d9d7738cad6'}
+# 用户初始积分余额
+userConfig = {"credit": 30}
+
 
 @jsonrpc.method("User.login(data=dict)")
 def user_login(data):
-    print("=========================")
+    print('-------------req data---------------')
     print(data)
-    return data
+    print('-------------req data---------------')
+    # 调用腾讯接口获取当前用户session_key
+    resp = get_user_info(data["code"])
+    print('-------------resp---------------')
+    print(resp)
+    print('-------------resp---------------')
+    # 加密获取到的session_key，生成自定义登录态标识
+    skey = hashlib.sha1(resp["session_key"].encode('utf-8')).hexdigest()
+    print('-------------skey---------------')
+    print(skey)
+    print('-------------skey---------------')
+    # 通过腾讯提供的通用工具类WXBizDataCrypt，将小程序端传入的用户加密信息解密
+    # 得到用户信息明文
+    pc = WXBizDataCrypt(appConfig["appid"], resp["session_key"])
+    decryptedData = pc.decrypt(data["encryptedData"], data["iv"])
+    print('-------------decryptedData---------------')
+    print(decryptedData)
+    print('-------------decryptedData---------------')
+    userInfo = {
+        "nickName": decryptedData['nickName'],
+        "gender": decryptedData['gender'],
+        "language": decryptedData['language'],
+        "city": decryptedData['city'],
+        "province": decryptedData['province'],
+        "country": decryptedData['country'],
+        "avatarUrl": decryptedData['avatarUrl'],
+        "balance": userConfig['credit']
+    }
+    # 用户不存在则插入数据
+    user = UsersWechart(
+        uid=decryptedData["openId"],
+        uname=decryptedData['nickName'],
+        ugender=decryptedData['gender'],
+        uaddress=decryptedData['province'] + "," + decryptedData['city'],
+        ubalance=userConfig['credit'],
+        skey=skey,
+        sessionkey=resp["session_key"],
+        uavatar=decryptedData['avatarUrl'],
+    )
+    db.session.add(user)  # 添加
+    db.session.commit()  # 提交执行
+
+    return {"userInfo": userInfo, "skey": skey, "result": 0}
+
+
+def get_user_info(js_code):
+    req_params = {
+        "appid": appConfig["appid"],  # 小程序的 ID
+        "secret": appConfig["secret"],  # 小程序的 secret
+        "js_code": js_code,
+        "grant_type": 'authorization_code'
+    }
+    req_result = requests.get('https://api.weixin.qq.com/sns/jscode2session',
+                              params=req_params, timeout=3, verify=False)
+    return req_result.json()
+
+
 @jsonrpc.method("User.list(username=String)")
 def user_list(username):
     """
@@ -44,8 +113,10 @@ def user_list(username):
         """遍历对象信息并提取出来，__to_dict__是讲对象转化成字典的方法
         这里的filter是一种传参搜索的方法，还有filter_by则是赋值搜索，一般建议用前者，后者用or等搜索会比较麻烦
         """
-        item = user.__to_dict__(['id', "username", 'mobile', 'department_id', 'create_time', 'update_time'])
-        department_jc = Department.query.filter(Department.id == item["department_id"]).all()
+        item = user.__to_dict__(
+            ['id', "username", 'mobile', 'department_id', 'create_time', 'update_time'])
+        department_jc = Department.query.filter(
+            Department.id == item["department_id"]).all()
         for user_department in department_jc:
             """将部门名称提取出来放到列表"""
             one_department_dic = user_department.__to_dict__(['name'])
@@ -66,8 +137,10 @@ def search_user(username):
     user_jc = Users.query.filter(Users.username == username).all()
     data = []
     for user in user_jc:
-        item = user.__to_dict__(['id', "username", 'mobile', 'department_id', 'create_time', 'update_time'])
-        department_jc = Department.query.filter(Department.id == item["department_id"]).all()
+        item = user.__to_dict__(
+            ['id', "username", 'mobile', 'department_id', 'create_time', 'update_time'])
+        department_jc = Department.query.filter(
+            Department.id == item["department_id"]).all()
         # print("department1--->", department_jc)
         for user_department in department_jc:
             """将部门名称提取出来放到列表"""
@@ -126,7 +199,8 @@ def add_user(data):
     if data["username"] != '' and data['password'] != '' and data['department'] != '' and data['phone'] != '':
         if data["username"] not in username_list and data['department'] in department_list:
             """校验成功后对密码加密并添加数据"""
-            ret = hashlib.md5(data["username"].encode('utf-8'))  # 获取用户名，利用不同的用户名来做动态盐 username也可以切片取
+            ret = hashlib.md5(data["username"].encode(
+                'utf-8'))  # 获取用户名，利用不同的用户名来做动态盐 username也可以切片取
             ret.update(data['password'].encode('utf-8'))
             data['password'] = ret.hexdigest()
             """下面如果飘背景颜色是正常的，因为还有值我没添加，让它自动生成"""
@@ -175,7 +249,8 @@ def edit_user(data):
     if data["username"] != '' and data['password'] != '' and data['department'] != '' and data['phone'] != '':
         if data['department'] in department_list:
             """直接获取的是列表，里面包含着对象，要提取出来做单独对象才可以丢该"""
-            user_jc = Users.query.filter(Users.username == data["username"]).all()
+            user_jc = Users.query.filter(
+                Users.username == data["username"]).all()
             user = user_jc[0]
             user.username = data["username"],
             user.password = data['password'],
@@ -203,8 +278,15 @@ def search_data(search_data):
         or_(Users.username.contains(search_data_str), (Users.mobile.contains(search_data_str)))).all()
     data = []
     for user in res_list:
-        item = user.__to_dict__(['id', "username", 'password', 'mobile', 'department_id', 'create_time', 'update_time'])
-        department_jc = Department.query.filter(Department.id == item["department_id"]).all()
+        item = user.__to_dict__(['id',
+                                 "username",
+                                 'password',
+                                 'mobile',
+                                 'department_id',
+                                 'create_time',
+                                 'update_time'])
+        department_jc = Department.query.filter(
+            Department.id == item["department_id"]).all()
         for user_department in department_jc:
             """将部门名称提取出来放到列表"""
             user_department_item = user_department.__to_dict__(['name'])
@@ -231,7 +313,8 @@ def department_list():
     department_name_dic = {}
     department_name_list = []
     for department in department_list_jc:
-        item = department.__to_dict__(['id', "name", 'describe', 'user_list', 'create_time', 'update_time'])
+        item = department.__to_dict__(
+            ['id', "name", 'describe', 'user_list', 'create_time', 'update_time'])
         department_name_list.append(item['name'])
         data.append(item)
     department_name_dic["name_list"] = department_name_list

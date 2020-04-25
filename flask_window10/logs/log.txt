@@ -4743,3 +4743,325 @@ INFO log.py:110 COMMIT
 DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"043damv21fwYjS1sbUv2190Iv21damvE","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"857c702a137ec40278387e32aa76943411f15d35","encryptedData":"fx7bEZUZaWhDUdYjEeCEa80NtwIhcvSon3ez6amWH3ClfHl/Q8ZLW9pB9O2mSSqUzXnyAtcypI0JxojU7w+NbYwrRg7B2TJJl+Lhq5MOy67I8uoD+zstPZMAHel+bm7+cGWcexmSWrzcY0IF+fuqPrIAzRVCKAYZ07NWO9pGDh8d/xY8lLrsFnt6KacvL2xK0MIg+yTqbiTJIpEW7h+YAdNnMhrKUBO4KVF4OwgYyqNrJMCUbijtWZB5tPQImHbCB37MxAUf/yRYxDrpdSSO/FlzxKBp9Vd8vAWxQevTvZQWYJNR/RExjZVc2jhtb413coXvkUmaYLnaJ+5OqabFwPMWEpcfdcJ30uRDo+Eqif9CwfdDBVwIAnAeqMqOu4BYWb2ov1/BIrv94ieACkvDTeg0Amt1JyNjB1mdpD+uJrlOgEAhuI4zyFRzxlN9on4vwzlJU96QiGvACVzXPAzZLWuDIy0hswiK8YRzimogFxo=","iv":"pooXNoJly9OpCIzTqLdIDQ=="}}}
 DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': 'abf2c054e34e85e8269d09890a119fc530f98ff9', 'result': 0}}
 INFO _internal.py:122 127.0.0.1 - - [24/Apr/2020 23:07:42] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 12:56:12] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 12:56:31] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 12:56:58] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 12:57:14] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=023udtWr0n4aLh1EddXr0qEvWr0udtWr&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 INSERT INTO users (create_time, update_time, sort, is_deleted, is_show, uid, uname, ugender, uaddress, ubalance, uavatar, skey, sessionkey) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 12, 58, 48, 689657), datetime.datetime(2020, 4, 25, 12, 58, 48, 689657), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 30, 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'a05c89aa8687c4b49d81b862826b0a4e1dc26e55', 'Bi3UUzYciFs2j8M0E7v+xA==')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"023udtWr0n4aLh1EddXr0qEvWr0udtWr","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"7e6b26f3dc60fbe17c13ded95947f3df12c409cd","encryptedData":"l4xyJC2lIZCs7zqxxmSKPqbaj/AviJzpmcymf7VKEvtIBG8A0RhL1EegH4kxAZGdYtx9ihQaOmPZIyiTf8uHtToW2BR8fsHGh0oewugwVpBtyRHZCpA3jnfnLgeGvujl974PaRjw1iELueHu6pu4QHmjmX+SPK6gf7lAR9Z/hRjyThmPth9q+5aH/Rdl0+FO53Nj8STKAUnRv81pJekfqYpQiNrk5bmQJrc7P0jOz/tUecidm7sVjSMyLYshmfQPNFuinGRYvt6qjKkZV8m+GUbpV9MjcQtB3R9MmbbVkpO0JBWAhIok9cHfDsZiYQODvOtcNyErSGMVkh4jRhKMjCNhBstPk67UBhb/cuiFS6NYErYIF1J0FLwvGeGTbn+cXsdbz9VbE0I1QQRiZpzz+48G7QQ9F8TVxwUPMxbW6i72pwkXL98fCNqfzHLgBepBcN78U3cRiuWgSelCu5queYxwvWP2U5tQ+I3l9oustSM=","iv":"koa/iB82CtuNIFwhWinxrQ=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': 'a05c89aa8687c4b49d81b862826b0a4e1dc26e55', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 12:58:48] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 12:58:58] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=043eIkUV15LgH01uGqVV1ZS7UV1eIkU-&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:16:03] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=023I3ocA0WKT5c1oTDcA01hjcA0I3ocH&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, ubalance=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 13, 16, 13, 91980), 100, '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:19:45] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=033qfBnE0KOy9i2AiNnE0rTvnE0qfBnz&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO _internal.py:122  * Detected change in 'D:\\github_Code\\wechat-app\\flask_window10\\application\\apps\\index\\api.py', reloading
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:33:06] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=033KGv2Q1m33N41f2B5Q1xtN2Q1KGv2s&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 INSERT INTO users (create_time, update_time, sort, is_deleted, is_show, uid, uname, ugender, uaddress, ubalance, uavatar, skey, sessionkey) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 13, 33, 7, 614133), datetime.datetime(2020, 4, 25, 13, 33, 7, 614133), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 30, 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '479bc7ace1a0f17be26d566431481978ec4655e8', 'XCpwAbMBbC+wKJ04XvfY+g==')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"033KGv2Q1m33N41f2B5Q1xtN2Q1KGv2s","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"cc361d78b63e08d009a27b76e2c7dcee49eca0f0","encryptedData":"xbi5twemH7SlYrHjC4CMWSRRlw/WApikSlmtYSDs0M857JpbkTd2CSjCmD7H3cKulPLkf/HH/ezs3Z0RknZ2eIplIwuiEjdbpZBBPUcrlC9b//gtY7D3MIf99mT+sbJTU4jJKxjkcPuFq/rpEx1GNcx8iScj5LNjgN7HpNndqt3FqQJ5cYDYXETbRMn/jzfOCWuqdl4wPr4agOxLODakVZaVp6Fc+tFGi9HnJYdJ3IkDOdlmOMz7/CxcLC32JvbZtPTmP7QTs71/+R09cO5s1e+NB1RE94r5WkQ2aNIed/SVW32pS8Z1GoZzDLYwSZc6qItAj081MUflhBtrBZDSuvX+2VJxRRpEpMFVo2GJrWExnNMoIMuLu348/6JH0o4qeecJSeHekW3jNxdycBrJuMjx8ze69ioEnN9HZ2I3I6LE47LepH+/5VnF4ZcTgsW24aOqnYTazhI4P6+Z7fHv+dZkcPJM9LrrCuutT05gvJo=","iv":"Ew/O/Yppzz5iSKcZwPb0Eg=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '479bc7ace1a0f17be26d566431481978ec4655e8', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:33:07] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:33:44] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:34:10] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:34:32] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=043aavQP0fyfC62iu3SP0X69QP0aavQh&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 13, 34, 45, 450070), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '0c9e48db84a58393af8c152be32151fade7b4d1a', 'iWiHsOZiP05Xrr2gMpKQ8Q==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"043aavQP0fyfC62iu3SP0X69QP0aavQh","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"49b40318bbde453ce6573698a2c3e756c59e0da6","encryptedData":"Ina7AFbwF5Lol/1Z89VCnySB8pJby46cory/HqCefk5RP2xuj5Q5K8Fk3kan0mdXKiLDs7HgXtuMqZvlDwRP0sqSoOotGX3R7UlAj7zgUowrYH+S1LRRBeDu5ul6H7h94nA6gJwFbQ7RwAGTu1dLtW38OJpg9DNfyzB+GVaK/eOieo+/WkoFZ9VBzxa9EJAIkYLkWJdIj+xSkvaXOOflZoZbJSdCQjsNmFywizVGpzsnJwN6zoVsJZ5BbHDMsH/mRLxrmUnOkSu52aSFvkvePjkwFfpJlpSvVMMsMbMsAj0lhBWxaVyPLwIuQL6499AxljF7sUXbcHLvP4Uzq60cUSqPNB4HWzSmCWLiUTZ3WA+5PP/I+0za/ta0pYmudN2Qt2KStl70WomvtgePplXep0VglOan/LP3K3LpzyMjjmcXOEkO7Ai8ZZSXZwONckBiVr4huv4qJkhV0CKFnjVTfNZ7R89hKWiWgcb4POFslEU=","iv":"wEgv6owNr1jZmaru8aouXg=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '0c9e48db84a58393af8c152be32151fade7b4d1a', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:34:45] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:59:20] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:59:32] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=023WmJas0HEzZh18Sves0rhUas0WmJaj&grant_type=authorization_code HTTP/1.1" 200 83
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 13, 59, 58, 60583), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '9da82025c57828ab553dbacfa6aa6f62896e0f0e', 'BNU66v9YA/thWX5DhvlKIQ==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"023WmJas0HEzZh18Sves0rhUas0WmJaj","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"9ddc797f42caace2fadc498f1db10c9695304e84","encryptedData":"21nec/1U5lqrk/UYMnHPL0M144mnF3S79FFj5vk0Ng4Ky3ohw2gnDh6qyCqTEA2XSp8ew6scX5vgMY24IoJpF9YReqLT1EHB2pMC1/3olTE0t+TVPvmyfDQ8WSawYjOpAFq61BFZeuORqaFpN7jfOLes6imEO2kuMBXfvqIbbIrMy28VJDGkRxRTeqoYIGNrKG7eNlirHIUzEO/1IpcX4NC8g0yacWwUYaHXiKLh8xG/mxdK2bZqMvZImeuaT299B7bUaJXBe/VA3dyUyand/s6ZC74FiOSxgGlYQwHU/GsSaIQZl6mF+KztpnYycm2BipzySy0mq0VQMB6jbTYm/7Oh9MwTopMDYCnAp6Y/SDVtvdyQwRQHpMmpQ0GOgFmBXj70UKLlbtkv+GCgaPaau20kisAUIXIzLsQQ4uOfemwkvjlEw5jzGc21nnpMdFWuh2FSbQKf5mNc7Mv7OGGRMBj6JgO0uDVGuDQb3e5P4eQ=","iv":"bQnNGzV9fdN0ajXRRGeR5w=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '9da82025c57828ab553dbacfa6aa6f62896e0f0e', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 13:59:58] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:05:36] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:05:49] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:10:57] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:11:15] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:11:43] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=043UbE5l1RI2Kq0VHq2l1BsH5l1UbE57&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 14, 11, 44, 127177), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '770eb3bf1679d0f18809dd14c34764314007b9e2', 'eAQ5CAgFUACGzra+BSZ3kQ==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"043UbE5l1RI2Kq0VHq2l1BsH5l1UbE57","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"d4ec3d0e317c7fb504c9d0a07997cf957cb84f71","encryptedData":"5IbIwAqRkP+j2TOfctXdgwvUAg0qyLMQLSxlDe19xJxcwGiz+1rhzo9NFmVHJ/pzlWO74Dx33/9vLVOqQ0x846KAuE3kE/Qc2t/8JcoUFPgM5dXA2ueM2eSL9purFpo9FRKR1fgM2i14s46zYoa+jfXDD/A+eAEJyqLiUBkqebzViTDZLybxxPsIbdeiX9DYjGnepqGvyigL9jIaUPeKUctR4QQObWI3GyKauP0qLN3lX6XZWgeRgyWLSZVmjbPmaY23BaE8OyJsaJ+K1+xJ68/yy8rNhmpPQy8LclLgdBNBY8zfHy5Qs6MofVq1f32ZqUVbxLz/+F94zhGKjx5PuOHvNSb4MPnVqh+y7rnm+nitVGHBOw6d6EJfwvX0vPZHq5F6mep63mcycXTX4Y2Yaez65P3MFs+CSe759OeqzSHibZNHoDOfVJiZDnbHGTkipsDUelxL7bXEaU4x0KBtPoR/ro4e/vAZh4KLRA/10PY=","iv":"Kcbld4jQvS2R7/fF5V9erw=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '770eb3bf1679d0f18809dd14c34764314007b9e2', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:11:44] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:18:12] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:18:26] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:18:48] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=0237Hi3V18vDQZ0BYk2V1dVz3V17Hi37&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 14, 18, 48, 888419), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '8e1704f8a851243ec1760aa9387c1617c3bdd2a0', 'ks89ZiNJTTyeY6LybwrgtA==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"0237Hi3V18vDQZ0BYk2V1dVz3V17Hi37","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"d323411e30372f8dd067826f5360e85f8ccfbac4","encryptedData":"6e037z5MMElf2OUkSVyfIFhAjttAlVAeikgVc4LTfNG4aE0x9g07M7GaIw1Gaz65Y8SO7CTRqJ7upqaAlqtfCuGZ3dhhjBYEVaLfCdKEtiAchrokwJ9flg50/KzeT6sme2T48/I1JA/MoLBpRmBJNKK2+JvTEuVAru0ik+JZ58NudRDyQ4ELwpeix2VM2IxONjGrcxghjy/HJEzhD9BOuix1SWec53QdyaIDc933hwnjiQK6ipGVDJYKMkj8RJjXinRjxjCLfjO0D+xS2ps57jhoZlygoPtmuN0fcZ+OWmFnfSIxWEPWgK+L4Qyn6+gb0vsIoYvdQv/QXp71rjYxN1bPNvMbQHj003w6h0++3Q9lZZfoW4AnN/AMvCO911OTgVMmAYB60ZzNIEvNzpNhw1NdwImNyuZeY1y7DUcRwhe77IunsbI3W4tGTkFtLvBHpapQVC3mfMRiq/7qWfcy0utCG02bZsStdBbqwVaKDag=","iv":"URNJChcdfbz/6uKkDCQXlg=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '8e1704f8a851243ec1760aa9387c1617c3bdd2a0', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:18:48] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:22:03] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:48:19] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:49:40] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:50:08] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:52:48] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=033UaV4j27dH2B0msQ6j2nzz4j2UaV4U&grant_type=authorization_code HTTP/1.1" 200 83
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 14, 52, 50, 291142), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '8c733a3f167959dda02a1b412c763357abadc95b', 'iehlWsJy/ponQJJBCEV5Bw==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"033UaV4j27dH2B0msQ6j2nzz4j2UaV4U","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"7b191237c0a648f163bc38306fac6ce2d5d55088","encryptedData":"+tGSnP+vaoVYWhS5sPm4iX8yXOjtqBduQl8fBN7zOxcUwVJfvqzm1lcO0NgBlsiCOSd5v2FZh4sryfgZgIn6TJ1FXoIh7bMVcCrVBBOlcc2G9pbmcpkQPq8zNtVspjnCkv3NhSsxrlF6VKzHg6KffnxW7EScQD+ncZtFInoONOHYU7Blj5pKHHVhiRaT1SnPRtO5pBeqfZ+v6rdtNvJE7488TFb385RK7qa6lz5EGzPLWOphmiP7XAJEmu2E+wtVuU6auZ7oC4RLj7Rk4STnWSY7DpQ3/fsFBmlRQUdTm36kEHVzDcDuaYA7FZnD5Von/mtgTKoPk0sCZAX17PhbUf703HKNrE5o+Hpmlv21ClfxhQ82eQMcFVbeEa9J1h3IKNPAGcJCra4rg84pbhWfvMflbCtTp1auxzK62jjN8f/qn1ctv5549QjSr/Hkbt1WPU12+KFYoj/mUji+GXy+7IkMzo6ONUvlPzRdkbQ58N0=","iv":"XKoyQx/F1lYEwQvugKY5oA=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '8c733a3f167959dda02a1b412c763357abadc95b', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:52:50] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:53:21] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:55:01] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=0338C9th1eit4v0vUMsh1r7dth18C9tv&grant_type=authorization_code HTTP/1.1" 200 83
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 14, 55, 2, 199623), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '98c9c82209f2a2865dffe0c2647089dfd0d9d66f', 'kMqBoGyQMyUkj6WZ/j+vRQ==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"0338C9th1eit4v0vUMsh1r7dth18C9tv","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"8aeb64858b6ba11f99e624f4b8f4dd70fb732e6e","encryptedData":"mVHSQTx1H1obBzRjy4eOlaGckE3iUHf59aq77RLzqo1mdMBmXJpMtM3upeI2Lw9S8hLdQNJJkrbXMnN8+rnqSt8bl6uiDscNoMa4aGPTreZUcCIcGKboVspJ5LQ2RwQmL0wRqhDWPSEM0P9UHVX64ERx+YUrYtpWrB0uqwYtHISdkmT9avLATY+9QS36YrNfbm5tmhydaA8/S1be1ziYlrOlIwYAXkVWKWPtIINoZJOV0m7nPHZO3wAxlHUHxhitNqWFm+FRAqrJEvj7j11RH/2uyYngaCNWlsrGkng1u33/PP0TmyxdwZLGoet5ZPDhgtSxlVrtMNsEiCyMncU7tGbRl4VEu7yp1YAcGUMA3K6nipltTHAzvN9LPwD5oX2MWnMGfcCfxugNPuiPcdATWlIEMGnmkNM3bvLVWKIHP2VYueYUD15ew0FLY3VSvd5cJ7uCOeNPTQJhuKiPagoWWRFNTeJ1lhwD4COCx4C5k9E=","iv":"J4C1y+TZ+fvKNZBcHty12Q=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '98c9c82209f2a2865dffe0c2647089dfd0d9d66f', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:55:02] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:55:27] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=0338rf7i2zOylE0DW78i2Nad7i28rf7Q&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 14, 55, 37, 291), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '9138318cb440285c46c0ff2aeacfe78c4bb61fe2', 'opQdHrjdlWjh+NhT6JjGbw==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"0338rf7i2zOylE0DW78i2Nad7i28rf7Q","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"3e1167040c7569b35f31cd888c58d216b1f2f2b0","encryptedData":"wm4BAS2M/MhHZEtlUgporjS8tOddL0f8gF0juKboR/+Kqvn8FwI3vJbkmMicNPe19mI8EXU5W5tbfuKGqR0Jo1zb8+6xUIyHlDY6vfE0gLI8nhMiHRTY7/7r2lDMF5gMjrU/jr3LjnIUbAwIj9DUacbAFc3ECklGINqdcg26Lem/82BmMVOW7tudiPM3yf2KRbNq/zuBgzPXYMEvWDOFsGxjfcz0lzr46KsxpE7/6NAQLblGkPi/Ry0uca0MZH9TmADLx+L/VO+TNSFR5v92tnvUv1RplnyGcdPt/4cSJtfgavNiUDUzaPFCQChyRvd3bcGeyfyrqqh3TNZrXjsjUgqGM1tq7zIrsNhpZld2XdGLZpiy6AsJaGj8ql+nhSoZbI/pfwCLLdC9F1Cdpc+v45sfwIzvvnyMiGUDdRaaDgflDog43e3SU8ilGMPOeuNV9/AHvIAfwh21B1oNHFxKKf1rQiKqtnkjJh8baFpqFBg=","iv":"ZIXpSTxRhlv8EVlLbnq6Cw=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '9138318cb440285c46c0ff2aeacfe78c4bb61fe2', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:55:37] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 14:56:00] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:09:21] "GET /api/user/getBoughtBooks?skey=9138318cb440285c46c0ff2aeacfe78c4bb61fe2 HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:14:20] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=0231JOLc25uX5I0EtPKc2jsCLc21JOLC&grant_type=authorization_code HTTP/1.1" 200 83
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 15, 15, 6, 646015), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '8355ef5c001aed59a120517baa40547e8a72662e', 'EFqpGEvxaQeCoU9+/wMlNA==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"0231JOLc25uX5I0EtPKc2jsCLc21JOLC","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"5abb19dabecee5469c85ec2e2a58cd0782b0c08c","encryptedData":"AN0UTXYmNirc1BY9alEQT4hKpJ5dOopMBaK/TFmRASKJAM4wdoU8jDi3N/WTWfCzQK6o72rkKGCummKVxm/iBx0lMI3wYO4qicSjFmR6WWQqEVRrJudp8qCXIuKNZFSy2AvWu7R001MZr4or+t8puVFOwqDPzGrhK+cWNL4G8YP5KzkcHNfpPbkLc5UCIgAvItOjK1aEUie3UmGIr7RbbfjB34NJH0/vM61+tdxP5LfQ06TfDn8TZ72jlp1cXGWga2JTwGrFw18vEGO+GAZXS3evdHFF2VL/5x+GUqMX0z1sqwNlf2UUUSO/JhMey2BWmYIU8JEq7a+8Hml/uyGkQChQ88nxApBNT1iuvsVopu/4dqb8o0q5AZAvfXO8uzNh7AM/7DBNWq+0c/GSOtAh70tGI3+gYd3ZvtbsnwPcA7yKrdNJlL5Pnjg2y6dLEAgA0w70syr7meHfnIDwAUiliRL0362RZVunAMjTrOqJAeQ=","iv":"FSxLw2n5c/okGRRQtYpy/g=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '8355ef5c001aed59a120517baa40547e8a72662e', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:15:06] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:15:14] "GET /api/user/getBoughtBooks?skey=8355ef5c001aed59a120517baa40547e8a72662e HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:16:54] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=033bKvrA1bhJb90gpUtA1dkDrA1bKvrn&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 15, 16, 55, 495617), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', '26db9ca26aa1e34a23917391dc9d822cd1da2519', 'eDKCH1QM2G2tP4072lrBsg==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"033bKvrA1bhJb90gpUtA1dkDrA1bKvrn","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"d17892789f568fb3780cfe22f041de77b3f90cc9","encryptedData":"Cu5biBAdqrJQfL+rxA5eRZIECoNwpDYITPH2A2stCO/Xd7JraPwMlT9sD6WtT/ahY3PXeq4YhzSps4HcFu/XPGdv80nxTbN5YJ1wPp8/kxn+xI/bmU+5uQ96CqC6Ctb+JXfYkQ0tAVpMjvMizlaPEgSjUMy/qdrh6+ggTHmdShjMbyhkcJfHE01Qtc/TSzTRD3XKQ05AQLVAnj2ZRY95G709a1IMlmUxDN7HaGhsNOKdlpp0APigzq2Vq0P0OCrm1DVmC6AVGIdIqCh9SUxLR9t4R5I8TIU0iEQRpUX5F9t9ZmE4y3tsd40ei73tJJKJOkU1c5VJoPPVO7kNv3mByM1mQrV6FZXDAQaCosXN5BS3Ke24Qajy1LpktIlhbVdponuULCib27uEOQ9v/9Vfn7FNPZ6KHg2Nj9QLweE/0itm1+aGd4LjrUcmrqQEjvEC7WT8TXNROtlRZoDXKFuY8L8PBw2NG6OYbU5/En7NPJ0=","iv":"xmxB9fagN159KaorUE4Brg=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': '26db9ca26aa1e34a23917391dc9d822cd1da2519', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:16:55] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:17:14] "GET /api/book/getBooks?is_all=1 HTTP/1.1" 404 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=043iLg2x1lvAPe0kcd4x1oq42x1iLg2f&grant_type=authorization_code HTTP/1.1" 200 82
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('¿Ó∫ËΩ‹',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 25, 15, 17, 15, 201711), '¿Ó∫ËΩ‹', 1, 'Guangdong,Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'f90ca4f6fdeae1af5d9c6467c050a6d65f5e6b6b', 'ZeBUOGUZVfu9uFQVgoShkA==', '¿Ó∫ËΩ‹')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"043iLg2x1lvAPe0kcd4x1oq42x1iLg2f","rawData":"{\"nickName\":\"¿Ó∫ËΩ‹\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"1851063f80f94683dd1f1035ff095419acb18c59","encryptedData":"3ejWxiLANlRQ5gOoNP1Q1bboKwhYZ+Kue0EKmeI/EBkHJwj+DxHKh58+OjxavDNbCfLucgDYvf8w1CXIItDl/i8NmfMxb9mBFUUTvdscTrQcjB1W/YouAL6saAHj7RIwpzUaVKwgJqjSBeCh5Wkpg5+tDI9XYhKOrgpn6K2N2bmtAkwNRDSAE2u3PJu++LBAiK5YhbCNsXRFGhJPZVFrwDdDxD+kt3PF6QCNar6x80Bi0rECNC5QDgBq9p4s8DXFOWJa7U/DOQmKruoBWfxDezsgmHjx/Um5P6s+Mq/aMJ/jWGu0uqvaWbnFTUr6SUvoGdOV8N1ZJSQJY4KYB0vdVg5KC7Pd3l8bx1PoRqKBMnzLkt6ZABEwrGzMK++gVq91W6CcQt6HULFjd+Im6llcqYyYd2KnY8TLmF5vTg7wOa6NYYwKuCLVyoszGx/WclUThnu5JNRdAXIvXDFCLklFXPy20jJL/p4Lyv7/8Udjt0o=","iv":"i0Nwl0syz/2VnI5fauUR4Q=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '¿Ó∫ËΩ‹', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 30}, 'skey': 'f90ca4f6fdeae1af5d9c6467c050a6d65f5e6b6b', 'result': 0}}
+INFO _internal.py:122 127.0.0.1 - - [25/Apr/2020 15:17:15] "POST /api HTTP/1.1" 200 -

@@ -2,25 +2,11 @@
 <view class="user-container bg-white">
     
     <view class="userinfo">
-        
-        <block wx:if="{{!hasLogin}}">
-            <image class="userinfo-avatar" src="../../images/login.png" background-size="cover" 
-            open-type='getUserInfo' 
-            catchtap="doLogin"></image>
-            <text class="userinfo-nickname">点击登录</text>
-            <!--高版本无法自动拉起授权，需要添加按钮让用户手动触发-->
-            <button open-type='getUserInfo' catchtap="doLogin">获取授权</button>
-        </block>
-        
-        <block wx:else>
-            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-            <!--
-            <open-data type="userAvatarUrl"></open-data>
-            <open-data type="userNickName"></open-data>
-            -->
-        </block>
-
+		<button wx:if="{{!hasLogin}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+		<block wx:else>
+		  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+		  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+		</block>
     </view>
 
 </view>

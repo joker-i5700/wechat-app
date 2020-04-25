@@ -60,7 +60,7 @@ App({
                      **/
                     wx.getUserInfo({
 
-                        withCredentials: true, // 非必填, 默认为true
+                        // withCredentials: true, // 非必填, 默认为true
                         
                         success: function (infoRes) {
                             console.log(infoRes,'>>>')

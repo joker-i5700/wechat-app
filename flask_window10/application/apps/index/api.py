@@ -40,29 +40,49 @@ def user_login(data):
     print('-------------decryptedData---------------')
     print(decryptedData)
     print('-------------decryptedData---------------')
+    # 通过解析出的用户明文信息，构建userinfo数组
     userInfo = {
         "nickName": decryptedData['nickName'],
         "gender": decryptedData['gender'],
         "language": decryptedData['language'],
-        "city": decryptedData['city'],
+        "city": decryptedData['province'] + "," + decryptedData['city'],
         "province": decryptedData['province'],
         "country": decryptedData['country'],
         "avatarUrl": decryptedData['avatarUrl'],
         "balance": userConfig['credit']
     }
-    # 用户不存在则插入数据
-    user = UsersWechart(
-        uid=decryptedData["openId"],
-        uname=decryptedData['nickName'],
-        ugender=decryptedData['gender'],
-        uaddress=decryptedData['province'] + "," + decryptedData['city'],
-        ubalance=userConfig['credit'],
-        skey=skey,
-        sessionkey=resp["session_key"],
-        uavatar=decryptedData['avatarUrl'],
-    )
-    db.session.add(user)  # 添加
-    db.session.commit()  # 提交执行
+    # 查询数据库信息，判断用户是否已经存在
+    m_user = UsersWechart.query.filter(
+        UsersWechart.uname == userInfo["nickName"]).all()
+
+    if len(m_user) == 0:
+        # 用户不存在则插入数据
+        user = UsersWechart(
+            uid=decryptedData["openId"],
+            uname=decryptedData['nickName'],
+            ugender=decryptedData['gender'],
+            uaddress=decryptedData['province'] + "," + decryptedData['city'],
+            ubalance=userConfig['credit'],
+            skey=skey,
+            sessionkey=resp["session_key"],
+            uavatar=decryptedData['avatarUrl'],
+        )
+        db.session.add(user)  # 添加
+        db.session.commit()  # 提交执行
+    else:
+        # 用户存在，获取用户积分信息
+        # m_uubalance = m_user[0].ubalance
+        # 用户存在则更新用户信息
+        UsersWechart.query.filter(
+            UsersWechart.uname == userInfo["nickName"]).update(
+            {
+                "uname": userInfo["nickName"],
+                "ugender": userInfo["gender"],
+                "uaddress": userInfo["city"],
+                "uavatar": userInfo["avatarUrl"],
+                "skey": skey,
+                "sessionkey": resp["session_key"]})
+        db.session.commit()  # 提交执行
 
     return {"userInfo": userInfo, "skey": skey, "result": 0}
 

@@ -81,14 +81,20 @@ Page({
             wx.hideLoading();
         } else {
             console.log('globalData中userInfo为空');
+			this.doLogin();
         }
     },
 
     onLoad: function() {
+		console.log("my.js:onLoad");
         this.checkLoginStatus();
+    },
+	onLaunch: function () {
+		console.log("my.js:onLaunch");
     },
 
     onShow: function() {
+		console.log("my.js:onShow");
         let that = this;
         that.setData({
             userInfo: app.globalData.userInfo

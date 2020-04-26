@@ -37,6 +37,7 @@ def setup_log(Config):
 
 # 创建jsonrpc实例对象
 jsonrpc = JSONRPC(app=None, service_url='/api', enable_web_browsable_api=True)
+jsonrpc_v2 = JSONRPC(app=None, service_url='/api/v2', enable_web_browsable_api=True)
 
 """APP的初始化函数"""
 
@@ -73,6 +74,7 @@ def init_app(config_name):
 
     # jsonrpc注册到app应用对象中
     jsonrpc.init_app(app)
+    jsonrpc_v2.init_app(app)
 
     # 首页模块，由于现在基本用不到蓝图，所以注释掉
     # from .apps.index import index_blu

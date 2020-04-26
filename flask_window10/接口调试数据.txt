@@ -1,0 +1,214 @@
+-------------decryptedData---------------
+{
+  openId: 'o1ccs5JLPhQJUvccd9z0jzSgzX9A',
+  nickName: '李鸿杰',
+  gender: 1,
+  language: 'zh_CN',
+  city: 'Shenzhen',
+  province: 'Guangdong',
+  country: 'China',
+  avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132',
+  watermark: { timestamp: 1587712600, appid: 'wxf34553e9cd1d35dd' }
+}
+-------------decryptedData---------------
+{
+	'openId': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A',
+	'nickName': '李鸿杰',
+	'gender': 1,
+	'language': 'zh_CN',
+	'city': 'Shenzhen',
+	'province': 'Guangdong',
+	'country': 'China',
+	'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132',
+	'watermark': {
+		'timestamp': 1587731397,
+		'appid': 'wxf34553e9cd1d35dd'
+	}
+}
+
+userinfo-----
+{
+	"nickName": "李鸿杰",
+	"gender": 1,
+	"language": "zh_CN",
+	"city": "Shenzhen",
+	"province": "Guangdong",
+	"country": "China",
+	"avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132",
+	"balance": 29
+}
+
+post json data-----------
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "User.login",
+	"params": {
+		"data": {
+			"code": "033WLsKY1mb6CV0ikEKY14QGKY1WLsK1",
+			"rawData": "{\"nickName\":\"李鸿杰\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}",
+			"signature": "a58414013490c459ef2d4765adea963669bba886",
+			"encryptedData": "TGrpvi5EGnNfzr8ATFXPpd11Np3Cvp7Z7TPh1tSa4RI5jembVotcYvgGhLhySWpg5SLSYHKZ+0i1K3NxF9GAMRx6rljYxAdwlUcbpt/HqJX3WyqjO8bmVST6rvG4a/GPR3PEhKSoDQwQPe7oN638xflCiQdIfFkO8r/V9ZJ8yb7BqGsKooNiNB0KQiuQ1+7sMUJoKG8fNhWP473mUR2RkkAPYe4pFtPdqn8t+Kx2lHD64NL+hFZWwYZQmiNfZchvVca/RoHwoe9j4L1WJi5kUQZ7vs6ugOJuFpXPIiI7PQdCtHlYEMsXdsBSIPeh1cpIiJolI/+0ZglypRCI3lPNBPppuW2Wjq+DzF9OMcePjt11+HVY8kGWeWZmfFjWowZ4uFpV6TYH3H6b0objR5tEHtL1h86Qnwb3F29ROMZ1OWNLqa/EQoPTVU+SCn6AuMWMLGamvRFLUSN0sad+ksogTOCjM3IFsVVjQGg61zWCrwQ=",
+			"iv": "SKnm85HidfHPeiIYgBB5mA=="
+		}
+	}
+}
+resp-----------------
+{
+	"userInfo": {
+		"nickName": "李鸿杰",
+		"gender": 1,
+		"language": "zh_CN",
+		"city": "Shenzhen",
+		"province": "Guangdong",
+		"country": "China",
+		"avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132",
+		"balance": 29
+	},
+	"skey": "86bb7c47e0e72555a880d52f0d85fdf56ef49155",
+	"result": 0
+}
+
+---从腾讯接口返回
+{'session_key': '6xijW/4Puo4xmNkZPcHG1Q==', 'openid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A'}
+
+
+-------------req data---------------
+{'code': '0437p3A82rJ69M0xMyC82Pz6A827p3Ae', 'rawData': '{"nickName":"李鸿杰","gender":1,"language":"zh_CN","city":"Shenzhen","province":"Guangdong","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132"}', 'signature': '78d9173ac709bfed046619f24f8edb8fed7e15e0', 
+
+'encryptedData': '
+iiP5imoKkZiqjhAlX70cizY9E9pmNMmMDc0hu0gdYPLQmF++LT3ql+b+xApd7UrsJQH+uY4J6xjW6PNocMCf3XJjmA+SZy16NWD8J8y+ZgDKm7NGAEIYOJ6iNmExeJE7yqtFQ3OUf4ragnY/aHNMBIyFXVXVguiQ4gL92j0iZ8ZDiE1ntXV07jPBwE4fSNAe5HFDdwvsRdzpG/BdatglxJFSQQn9M20foCqEQqRkXb9+z9oaTyI1lvYHdFkIBWk0Kzj+44tTqjl7nlP4XjztcJaUCg+g8GQFCXKae45gIg15Zho6eVre9FuDgc8YNAgzlRLLrh7SNoAjm3TjcRgAKL+YuVSigLrrT2BwmWLdJnRfXI9KtdGFDkmSA9zbqWAuWu2ULKKjodXnoXc+N99UCniK8JRqVhTUQO1vVngGngGGk6B+Wpz7kP0aDrb7Ww/x0vbcW2aSnlmZK88OQH8/ola9K2dff52r16YD6j++0ck=
+',
+
+'iv': 'pUIwjsjKYrwxWPKJ2NjQzg=='}
+-------------req data---------------
+
+-------------resp---------------
+{'session_key': 'SC74oskfWOjtSKA09RLXnw==', 'openid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A'}
+-------------resp---------------
+
+
+
+
+
+req GET------
+http://127.0.0.1:3003/api/book/getBooks?is_all=1
+
+resp------
+{
+	"result": 0,
+	"data": [{
+		"author": "朴灵",
+		"category": 3,
+		"cover_url": "https://img3.doubanio.com/lpic/s27269296.jpg",
+		"file_url": "******** book file ********",
+		"book_id": 1000000001,
+		"book_name": "深入浅出Node.js",
+		"book_price": 1,
+		"book_publisher": "人民邮电出版社"
+	}, {
+		"author": "Nicholas C.Zakas",
+		"category": 3,
+		"cover_url": "https://img3.doubanio.com/lpic/s8958650.jpg",
+		"file_url": "******** book file ********",
+		"book_id": 1000000002,
+		"book_name": "红宝书",
+		"book_price": 1,
+		"book_publisher": "人民邮电出版社"
+	}, {
+		"author": "东野奎吾",
+		"category": 1,
+		"cover_url": "https://img3.doubanio.com/lpic/s27264181.jpg",
+		"file_url": "******** book file ********",
+		"book_id": 1000000003,
+		"book_name": "解忧杂货店",
+		"book_price": 1,
+		"book_publisher": "南海出版公司"
+	}, {
+		"author": "曹雪芹",
+		"category": 2,
+		"cover_url": "https://img1.doubanio.com/lpic/s1070959.jpg",
+		"file_url": "******** book file ********",
+		"book_id": 1000000004,
+		"book_name": "红楼梦",
+		"book_price": 1,
+		"book_publisher": "人民文学出版社"
+	}, {
+		"author": "汉斯·克里斯蒂安·安徒生 ",
+		"category": 1,
+		"cover_url": "https://img3.doubanio.com/lpic/s1034062.jpg",
+		"file_url": "******** book file ********",
+		"book_id": 1000000005,
+		"book_name": "安徒生童话故事集",
+		"book_price": 1,
+		"book_publisher": "人民文学出版社"
+	}]
+}
+
+
+req GET----单击主页其中一个图片获取图书详情（无评论信）
+http://127.0.0.1:3003/api/book/queryBook?bookid=1000000001&skey=86bb7c47e0e72555a880d52f0d85fdf56ef49155
+
+resp---
+{
+	"result": 0,
+	"data": {
+		"is_buy": 1,
+		"lists": []
+	}
+}	
+
+req GET----单击主页其中一个图片获取图书详情（有评论）
+http://127.0.0.1:3003/api/book/queryBook?bookid=1000000001&skey=86bb7c47e0e72555a880d52f0d85fdf56ef49155
+
+resp---
+{
+	"result": 0,
+	"data": {
+		"is_buy": 1,
+		"lists": [{
+			"cmid": 1,
+			"uid": "o1ccs5JLPhQJUvccd9z0jzSgzX9A",
+			"uname": "李鸿杰",
+			"ccontent": "12313213",
+			"bkname": "深入浅出Node.js",
+			"bkid": 1000000001,
+			"uavatar": "https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132",
+			"ctime": "2020-04-25 05:34:17"
+		}]
+	}
+}
+
+req POST-----写评论
+http://127.0.0.1:3003/api/comment/write
+{"skey":"86bb7c47e0e72555a880d52f0d85fdf56ef49155","content":"12313213","bookid":"1000000001","formid":"the formId is no longer available in develop or trial version of this mini program"}
+
+两次查询实现购买状态查询
+sql_queryBookBySkey = "select count(*) as buyCount from orders left join users on users.uid=orders.uid where users.skey='%s' and orders.gid='%s';" % (
+        data["skey"], data["bookid"])
+select uid from users where skey='f90ca4f6fdeae1af5d9c6467c050a6d65f5e6b6b';
+select * from orders where uid='o1ccs5JLPhQJUvccd9z0jzSgzX9A' and gid='1000000001';
+
+
+1	o1ccs5JLPhQJUvccd9z0jzSgzX9A	1	2020-04-21 08:16:03	1000000001
+
+
+http://127.0.0.1:3003/api/user/getBoughtBooks?skey=86bb7c47e0e72555a880d52f0d85fdf56ef49155
+{"result":0,"list":[{"bkid":1000000001,"bkname":"深入浅出Node.js","bkfile":"******** book file ********","bkcover":"https://img3.doubanio.com/lpic/s27269296.jpg"}]}
+{
+	"result": 0,
+	"list": [{
+		"bkid": 1000000001,
+		"bkname": "深入浅出Node.js",
+		"bkfile": "******** book file ********",
+		"bkcover": "https://img3.doubanio.com/lpic/s27269296.jpg"
+	}]
+}
+
+
+
+http://127.0.0.1:3003/api/order/buy
+{"bookid":"1000000002","skey":"86bb7c47e0e72555a880d52f0d85fdf56ef49155"}
+
+{"result":0,"errmsg":"兑换成功"}
+

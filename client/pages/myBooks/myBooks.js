@@ -81,19 +81,33 @@ Page({
         let that = this;
 
         wx.request({
-            url: api.getBoughtBooksUrl,
-            data: {
-                skey: app.getLoginFlag()            // 获取当前用户skey
-            },
+            url: api.jsonRpcUrl,
+			data: {
+				  "jsonrpc": "2.0",
+				  "id": 1,
+				  "method": "User.getBoughtBooks",
+				  "params": {
+					"data" :{
+					  skey: app.getLoginFlag()  // 获取当前用户skey
+					}
+				  }
+				},
+				header: {},
+				method: 'POST',
+				dataType: 'json',
+				responseType: 'text',
             success: function(res) {
-                let data = res.data;
-
-                if (data.result === 0) {
-                    that.setData({
-                        bookList: data.list || []
-                    });
-                }
-
+				if(res.data.hasOwnProperty("result")){
+					let data = res.data.result;
+					if (data.result === 0) {
+						that.setData({
+							bookList: data.list || []
+						});
+					}
+				}
+                else if(res.data.hasOwnProperty("error")){
+					console.error("server error:", res.data.error);
+				}
             },
             error: function(err) {
                 console.log(err);

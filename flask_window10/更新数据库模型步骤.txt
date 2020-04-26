@@ -1,0 +1,13 @@
+1 在index/models.py中新增、修改、或删除数据库模型类
+2 删除migrations目录内容，删除前做好备份
+3 在python虚拟环境下执行：python manage.py db init
+4 删除数据中alembic_version表
+5 在python虚拟环境中执行：python manage.py db migrate -m '创建基本数据库'
+6 在python虚拟环境中执行：python manage.py db upgrade
+执行失败，返回：
+  File "D:\github_Code\wechat-app\flask_window10\venv\lib\site-packages\MySQLdb\connections.py", line 224, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.DataError: (MySQLdb._exceptions.DataError) (1171, 'All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead')
+[SQL: ALTER TABLE users MODIFY id INTEGER(11) NULL AUTO_INCREMENT]
+(Background on this error at: http://sqlalche.me/e/9h9h)
+7 检查数据库表，如更新成功，则忽略以上错误返回

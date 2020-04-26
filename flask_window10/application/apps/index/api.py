@@ -1,4 +1,5 @@
 from application import jsonrpc
+from application import jsonrpc_v2
 import requests
 from Crypto.Cipher import AES
 from binascii import b2a_hex, a2b_hex
@@ -6,7 +7,7 @@ from application.utils.AESCipher import AESCipher
 from application.utils.WXBizDataCrypt import WXBizDataCrypt
 from flask import render_template, g, request, flash, redirect, url_for, json, jsonify
 from flask.json import JSONEncoder
-from .models import Users, Department, UsersWechart, db
+from .models import Users, Department, UsersWechart, Books, BooksComment, Orders, db
 from sqlalchemy import or_
 import hashlib
 import base64
@@ -17,9 +18,20 @@ appConfig = {"appid": 'wxf34553e9cd1d35dd',
 # 用户初始积分余额
 userConfig = {"credit": 30}
 
+# v2版本接口示例
+@jsonrpc_v2.method("method.test(data=dict)")
+def test(data):
+    print(data)
+    return 0
+
 
 @jsonrpc.method("User.login(data=dict)")
 def user_login(data):
+    """
+    登录
+    :param data:
+    :return:
+    """
     print('-------------req data---------------')
     print(data)
     print('-------------req data---------------')
@@ -40,20 +52,11 @@ def user_login(data):
     print('-------------decryptedData---------------')
     print(decryptedData)
     print('-------------decryptedData---------------')
-    # 通过解析出的用户明文信息，构建userinfo数组
-    userInfo = {
-        "nickName": decryptedData['nickName'],
-        "gender": decryptedData['gender'],
-        "language": decryptedData['language'],
-        "city": decryptedData['province'] + "," + decryptedData['city'],
-        "province": decryptedData['province'],
-        "country": decryptedData['country'],
-        "avatarUrl": decryptedData['avatarUrl'],
-        "balance": userConfig['credit']
-    }
+
+
     # 查询数据库信息，判断用户是否已经存在
     m_user = UsersWechart.query.filter(
-        UsersWechart.uname == userInfo["nickName"]).all()
+        UsersWechart.uname == decryptedData['nickName']).all()
 
     if len(m_user) == 0:
         # 用户不存在则插入数据
@@ -70,19 +73,28 @@ def user_login(data):
         db.session.add(user)  # 添加
         db.session.commit()  # 提交执行
     else:
-        # 用户存在，获取用户积分信息
-        # m_uubalance = m_user[0].ubalance
         # 用户存在则更新用户信息
         UsersWechart.query.filter(
-            UsersWechart.uname == userInfo["nickName"]).update(
+            UsersWechart.uname == decryptedData["nickName"]).update(
             {
-                "uname": userInfo["nickName"],
-                "ugender": userInfo["gender"],
-                "uaddress": userInfo["city"],
-                "uavatar": userInfo["avatarUrl"],
+                "uname": decryptedData["nickName"],
+                "ugender": decryptedData["gender"],
+                "uaddress": decryptedData["city"],
+                "uavatar": decryptedData["avatarUrl"],
                 "skey": skey,
                 "sessionkey": resp["session_key"]})
         db.session.commit()  # 提交执行
+        # 更新成功，通过解析出的用户明文信息，构建userinfo数组，返回给客户端
+        userInfo = {
+            "nickName": decryptedData['nickName'],
+            "gender": decryptedData['gender'],
+            "language": decryptedData['language'],
+            "city": decryptedData['province'] + "," + decryptedData['city'],
+            "province": decryptedData['province'],
+            "country": decryptedData['country'],
+            "avatarUrl": decryptedData['avatarUrl'],
+            "balance": m_user[0].ubalance  # 用户存在，从数据库中获取用户积分信息，返回给前端
+        }
 
     return {"userInfo": userInfo, "skey": skey, "result": 0}
 
@@ -97,6 +109,137 @@ def get_user_info(js_code):
     req_result = requests.get('https://api.weixin.qq.com/sns/jscode2session',
                               params=req_params, timeout=3, verify=False)
     return req_result.json()
+
+
+@jsonrpc.method("User.getBoughtBooks(data=dict)")
+def user_getBoughtBooks(data):
+    """
+    查询当前用户已购书籍
+    :param data:
+    :return:
+    """
+    print(data)
+    m_res_user = UsersWechart.query.filter(
+        UsersWechart.skey == data["skey"]).all()
+    m_res_order = Orders.query.filter(Orders.uid == m_res_user[0].uid).all()
+    m_all_books = Books.query.all()
+    m_book_list = []
+    for order in m_res_order:
+        for book in m_all_books:
+            if str(book.bkid) == str(order.gid):
+                m_book = {
+                    "bkid": book.bkid,
+                    "bkname": book.bkname,
+                    "bkfile": book.bkfile,
+                    "bkcover": book.bkcover}
+                m_book_list.append(m_book)
+    print(m_book_list)
+    return {"result": 0, "list": m_book_list}
+
+
+@jsonrpc.method("Book.getBooks(data=dict)")
+def book_getbooks(data):
+    """
+    获取书籍信息
+    :param data:
+    :return:
+    """
+    print(data)
+    m_ldata = []
+    if 1 == data["is_all"]:
+        all_books = Books.query.all()
+        print(all_books)
+        for book in all_books:
+            m_book = {
+                "author": book.bkauthor,
+                "category": book.bkclass,
+                "cover_url": book.bkcover,
+                "file_url": book.bkfile,
+                "book_id": book.bkid,
+                "book_name": book.bkname,
+                "book_price": book.bkprice,
+                "book_publisher": book.bkpublisher}
+            m_ldata.append(m_book)
+    print(m_ldata)
+    return {"result": 0, "data": m_ldata}
+
+
+@jsonrpc.method("Book.queryBook(data=dict)")
+def book_queryBook(data):
+    """
+    查询当前用户是否已经购买该书籍并返回评论列表
+    :param data:
+    :return:
+    """
+    print(data)
+    """
+    sql_queryBookBySkey = "select count(*) as buyCount from orders left join users on users.uid=orders.uid where users.skey='%s' and orders.gid='%s';" % (
+        data["skey"], data["bookid"])
+    print(sql_queryBookBySkey)
+    m_resData = db.session().execute(sql_queryBookBySkey).fetchone()
+    print(m_resData._metadata.keys[0])
+    """
+    m_res_user = UsersWechart.query.filter(
+        UsersWechart.skey == data["skey"]).all()
+    print(m_res_user[0].uid)
+
+    m_res_order = Orders.query.filter(
+        Orders.uid == m_res_user[0].uid,
+        Orders.gid == data["bookid"]).all()
+    print(len(m_res_order))
+
+    m_comment_list = BooksComment.query.filter(
+        BooksComment.bkid == data["bookid"]).all()
+    print(m_comment_list)
+
+    r_comment_list = []
+    for comment in m_comment_list:
+        r_comment = {
+            "cmid": comment.cmid,
+            "uid": comment.uid,
+            "uname": comment.uname,
+            "ccontent": comment.ccontent,
+            "bkname": comment.bkname,
+            "bkid": comment.bkid,
+            "uavatar": comment.uavatar,
+            "ctime": comment.ctime}
+        r_comment_list.append(r_comment)
+    print(r_comment_list)
+    return {"result": 0, "data": {"is_buy": len(
+        m_res_order), "lists": r_comment_list}}
+
+
+@jsonrpc.method("Order.buy(data=dict)")
+def Order_buy(data):
+    """
+    兑换当前书籍
+    :param data:
+    :return:
+    """
+    print(data)
+    # 获取当前书籍的积分价值
+    m_res_books = Books.query.filter(Books.bkid == data["bookid"]).all()
+    m_price = m_res_books[0].bkprice
+    print(m_price)
+    # 获取当前用户积分余额
+    m_res_user = UsersWechart.query.filter(
+        UsersWechart.skey == data["skey"]).all()
+    m_user_ublance = m_res_user[0].ubalance
+    print(m_user_ublance)
+    if m_user_ublance >= m_price:
+        # 兑换书籍，添加订单并更新用户余额信息
+        order = Orders(
+            uid=m_res_user[0].uid,
+            oprice=m_price,
+            gid=data["bookid"])
+        db.session.add(order)  # 添加
+        db.session.commit()  # 提交执行
+    else:
+        return {"result": -4, "errmsg": '余额不足，无法购买'}
+    m_res_update = db.session.query(UsersWechart).filter(UsersWechart.uid == m_res_user[0].uid).update({"ubalance" : m_user_ublance - m_price})
+    db.session.commit()
+    print(m_res_update)
+    return {"result":0,"msg":"兑换成功"}
 
 
 @jsonrpc.method("User.list(username=String)")

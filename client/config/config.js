@@ -2,6 +2,7 @@
 const baseUrl 			= 'http://127.0.0.1:5000/';
 
 const jsonRpcUrl   = baseUrl + 'api';
+const jsonRpcUrl_v2 = baseUrl + 'api/v2';
 
 // 获取书籍信息接口地址(可选择全部或单个书籍)
 const getBooksUrl 		= baseUrl + 'api/book/getBooks';
@@ -19,6 +20,7 @@ const buyBookUrl = baseUrl + 'api/order/buy';
 
 module.exports = {
 	jsonRpcUrl:   jsonRpcUrl,
+	jsonRpcUrl_v2: jsonRpcUrl_v2,
 	getBooksUrl: 		getBooksUrl,
 	commentUrl: 		commentUrl,
 	queryBookUrl: 		queryBookUrl,

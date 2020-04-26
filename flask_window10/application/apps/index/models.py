@@ -1,4 +1,5 @@
 from application import db
+from datetime import datetime
 from application.utils.models import BaseModel
 
 
@@ -26,7 +27,11 @@ class Users(BaseModel, db.Model):
     username = db.Column(db.String(64), index=True, comment="用户名")
     password = db.Column(db.String(64), index=True, comment="密码")
     mobile = db.Column(db.String(64), index=True, comment="手机")
-    department_id = db.Column(db.Integer, db.ForeignKey("department.id"), comment="部门ID")
+    department_id = db.Column(
+        db.Integer,
+        db.ForeignKey("department.id"),
+        comment="部门ID")
+
 
 class UsersWechart(BaseModel, db.Model):
     __tablename__ = "users"
@@ -40,3 +45,33 @@ class UsersWechart(BaseModel, db.Model):
     skey = db.Column(db.String(128), nullable=False, comment="用户登录态标识")
     sessionkey = db.Column(db.String(128), nullable=False, comment="微信登录态标识")
 
+
+class Books(BaseModel, db.Model):
+    __tablename__ = "books"
+    bkid = db.Column(db.Integer, primary_key=True, comment="书籍id")
+    bkclass = db.Column(db.Integer, comment="书籍类别")
+    bkname = db.Column(db.String(48), nullable=False, comment="书籍名称")
+    bkauthor = db.Column(db.String(32), nullable=False, comment="书籍作者")
+    bkpublisher = db.Column(db.String(16), comment="书籍出版社")
+    bkfile = db.Column(db.String(256), nullable=False, comment="书籍文件地址")
+    bkcover = db.Column(db.String(120), comment="书籍封面")
+    bkprice = db.Column(db.Integer, nullable=False, comment="书籍积分")
+
+class BooksComment(BaseModel, db.Model):
+    __tablename__ = "books_comment"
+    cmid = db.Column(db.Integer, primary_key=True, comment="评论id")
+    uid = db.Column(db.String(128), nullable=False, comment="用户openid")
+    uname = db.Column(db.String(48), nullable=False, comment="用户名称")
+    ccontent = db.Column(db.String(128), comment="评论内容")
+    bkname = db.Column(db.String(16), nullable=False, comment="书籍名称")
+    bkid = db.Column(db.String(256), nullable=False, comment="书籍ID")
+    uavatar = db.Column(db.String(256), nullable=False, comment="用户头像")
+    ctime = db.Column(db.DateTime, default=datetime.now, nullable=False, comment="评论时间")
+
+class Orders(BaseModel, db.Model):
+    __tablename__ = "orders"
+    oid = db.Column(db.Integer, primary_key=True, comment="订单ID")
+    uid = db.Column(db.String(128), nullable=False, comment="用户openid")
+    oprice = db.Column(db.Integer, nullable=False, comment="商品价格")
+    otime = db.Column(db.DateTime, default=datetime.now, comment="订单创建时间")
+    gid = db.Column(db.String(16), nullable=False, comment="商品ID")

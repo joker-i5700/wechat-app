@@ -81,6 +81,7 @@ Page({
             wx.hideLoading();
         } else {
             console.log('globalData中userInfo为空');
+			// add by jet 
 			this.doLogin();
         }
     },

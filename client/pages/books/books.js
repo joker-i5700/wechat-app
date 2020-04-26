@@ -51,27 +51,47 @@ Page({
         let that = this;
 
         wx.request({
-            url: api.getBooksUrl,
+            url: api.jsonRpcUrl,
             data: {
-                is_all: 1
-            },
-            success: function(res) {
-                let data = res.data;
-                // console.log(data);
+				  "jsonrpc": "2.0",
+				  "id": 1,
+				  "method": "Book.getBooks",
+				  "params": {
+					"data" :{
+					  is_all: 1
+					}
+				  }
+				},
+				header: {},
+				method: 'POST',
+				dataType: 'json',
+				responseType: 'text',
+            success: function(res) { 
+                // console.log(res);
+				if(res.data.hasOwnProperty("result")){
+					let data = res.data.result;
+					console.debug("server resp data:", data);
+					if (data.result === 0) {
+						setTimeout(function() {
+							that.setData({
+								bookList: data.data,
+								showLoading: false
+							});
+						}, 800);
+					}
+				}
+				else if(res.data.hasOwnProperty("error")){
+					console.error("server error:", res.data.error);
+				}
 
-                if (data.result === 0) {
-                    setTimeout(function() {
-                        that.setData({
-                            bookList: data.data,
-                            showLoading: false
-                        });
-                    }, 800);
-                }
-
             },
-            error: function(err) {
-                console.log(err);
-            }
+            fail: function(res) {
+                console.log(Error.data);
+			},
+			complete: function (res) {
+				//绝对执行
+				//console.log("绝对执行");
+			},
         });
     },
 

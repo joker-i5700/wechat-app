@@ -110,11 +110,25 @@ Page({
         };
 
         wx.request({
-            url: api.buyBookUrl,
-            method: 'POST',
-            data: requestData,
+            url: api.jsonRpcUrl,
+			data: {
+				  "jsonrpc": "2.0",
+				  "id": 1,
+				  "method": "Order.buy",
+				  "params": {
+					"data" : requestData
+				  }
+				},
+				header: {},
+				method: 'POST',
+				dataType: 'json',
+				responseType: 'text',
             success: function(res) {
-                if (res.data.result === 0) {
+				if(res.data.hasOwnProperty("result")){
+					let data = res.data.result;
+					console.debug(data);
+					if (data.result === 0) {
+
                     // 将按钮置为“打开”
                     // 更新用户兑换币的值
                     that.setData({
@@ -127,10 +141,15 @@ Page({
 
                     that.showInfo('购买成功', 'success');
 
-                } else {
-                    console.log(res);
-                    that.showInfo('返回数据异常');
-                }
+					} else {
+						console.log(res);
+						that.showInfo('返回数据异常');
+					}
+				}
+				else if(res.data.hasOwnProperty("error")){
+					console.error("server error:", res.data.error);
+				}
+                
             },
             fail: function(error) {
                 console.log(error);
@@ -150,24 +169,43 @@ Page({
         };
 
         wx.request({
-            url: api.queryBookUrl,
-            method: 'GET',
-            data: requestData,
+            url: api.jsonRpcUrl,
+            data: {
+				  "jsonrpc": "2.0",
+				  "id": 1,
+				  "method": "Book.queryBook",
+				  "params": {
+					"data" : requestData
+				  }
+				},
+				header: {},
+				method: 'POST',
+				dataType: 'json',
+				responseType: 'text',
             success: function(res) {
-                if (res.data.result === 0) {
+				console.debug(res.data.result);
+				if(res.data.hasOwnProperty("result")){
+					let data = res.data.result;
+					console.debug("server resp data:", data);
+					if (data.result === 0) {
                     that.setData({
-                        commentList: res.data.data.lists || [],
-                        bookIsBuy: res.data.data.is_buy
+                        commentList: data.data.lists || [],
+                        bookIsBuy: data.data.is_buy
                     });
 
                     setTimeout(function() {
-                        that.setData({
-                            commentLoading: false
-                        });
-                    }, 500);
-                } else {
-                    that.showInfo('返回数据异常');
-                }
+							that.setData({
+								commentLoading: false
+							});
+						}, 500);
+					} else {
+						that.showInfo('返回数据异常');
+					}
+				}
+				else if(res.data.hasOwnProperty("error")){
+					console.error("server error:", res.data.error);
+				}
+                
             },
             fail: function(error) {
                 that.showInfo('请求失败');

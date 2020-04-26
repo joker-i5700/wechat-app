@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b04afc18-3327-484f-866a-94ea556be26f" name="Default Changelist" comment="" />
+    <list default="true" id="b04afc18-3327-484f-866a-94ea556be26f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/pages/books/books.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/books/books.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/pages/detail/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/detail/detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/pages/my/my.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/my/my.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,6 +205,9 @@
       <workItem from="1587703874750" duration="11457000" />
       <workItem from="1587730830269" duration="4790000" />
       <workItem from="1587789590292" duration="5108000" />
+      <workItem from="1587806210658" duration="8507000" />
+      <workItem from="1587828311263" duration="7349000" />
+      <workItem from="1587881460907" duration="19692000" />
     </task>
     <servers />
   </component>
@@ -229,8 +237,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/application/apps/index/api.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="7" />
+          <line>165</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/application/apps/index/api.py</url>
+          <line>238</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -240,11 +253,15 @@
         <watch expression="resp" language="Python" />
         <watch expression="resp[&quot;session_key&quot;]" language="Python" />
         <watch expression="m_user[0].ubalance" language="Python" />
+        <watch expression="m_resData[0]" language="Python" />
+        <watch expression="m_res_user[0].uid" language="Python" />
+        <watch expression="book.bkid" language="Python" />
+        <watch expression="order.gid" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_window10$manage.coverage" NAME="manage Coverage Results" MODIFIED="1587797203759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_window10$manage.coverage" NAME="manage Coverage Results" MODIFIED="1587910106967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_work$manage.coverage" NAME="manage Coverage Results" MODIFIED="1560168523505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_work$main.coverage" NAME="main Coverage Results" MODIFIED="1560167396302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

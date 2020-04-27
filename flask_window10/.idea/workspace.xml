@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b04afc18-3327-484f-866a-94ea556be26f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/config/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/pages/books/books.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/books/books.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/pages/detail/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/detail/detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/pages/my/my.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/my/my.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/pages/comment/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pages/comment/comment.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -208,6 +205,8 @@
       <workItem from="1587806210658" duration="8507000" />
       <workItem from="1587828311263" duration="7349000" />
       <workItem from="1587881460907" duration="19692000" />
+      <workItem from="1587961859883" duration="3372000" />
+      <workItem from="1587981105167" duration="2314000" />
     </task>
     <servers />
   </component>
@@ -237,7 +236,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/application/apps/index/api.py</url>
-          <line>165</line>
+          <line>164</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -261,7 +260,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flask_window10$manage.coverage" NAME="manage Coverage Results" MODIFIED="1587910106967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/flask_window10$manage.coverage" NAME="manage Coverage Results" MODIFIED="1587989514811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_work$manage.coverage" NAME="manage Coverage Results" MODIFIED="1560168523505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/flask_work$main.coverage" NAME="main Coverage Results" MODIFIED="1560167396302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

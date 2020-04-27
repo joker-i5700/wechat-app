@@ -7612,3 +7612,695 @@ DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtB
 DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}]}}
 INFO log.py:110 ROLLBACK
 INFO _internal.py:122 127.0.0.1 - - [26/Apr/2020 22:09:44] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.getBooks","params":{"data":{"is_all":1}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': [{'author': '朴灵', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s27269296.jpg', 'file_url': '******** book file ********', 'book_id': 1000000001, 'book_name': '深入浅出Node.js', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': 'Nicholas C.Zakas', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s8958650.jpg', 'file_url': '******** book file ********', 'book_id': 1000000002, 'book_name': '红宝书', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': '东野奎吾', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s27264181.jpg', 'file_url': '******** book file ********', 'book_id': 1000000003, 'book_name': '解忧杂货店', 'book_price': 1, 'book_publisher': '南海出版公司'}, {'author': '曹雪芹', 'category': 2, 'cover_url': 'https://img1.doubanio.com/lpic/s1070959.jpg', 'file_url': '******** book file ********', 'book_id': 1000000004, 'book_name': '红楼梦', 'book_price': 1, 'book_publisher': '人民文学出版社'}, {'author': '汉斯·克里斯蒂安·安徒生 ', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s1034062.jpg', 'file_url': '******** book file ********', 'book_id': 1000000005, 'book_name': '安徒生童话故事集', 'book_price': 1, 'book_publisher': '人民文学出版社'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 13:59:12] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000001')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000001',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000001","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 1, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '12313213testtest', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 34, 17)}, {'cmid': 2, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttttttt测试', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 19, 19)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 13:59:32] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000002')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000002',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000002","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': []}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 13:59:38] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books 
+WHERE books.bkid = %s 
+ LIMIT %s
+INFO log.py:110 ('1000000002', 1)
+INFO log.py:110 INSERT INTO books_comment (create_time, update_time, sort, is_deleted, is_show, uid, uname, ccontent, bkname, bkid, uavatar, ctime) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 13, 59, 54, 792070), datetime.datetime(2020, 4, 27, 13, 59, 54, 792070), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '李鸿杰', 'ttest好的', '红宝书', '1000000002', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', datetime.datetime(2020, 4, 27, 13, 59, 54, 792070))
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Comment.write","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01","content":"ttest好的","bookid":"1000000002","formid":"the formId is no longer available in develop or trial version of this mini program"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': 0}
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 13:59:54] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000002')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000002',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000002","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 3, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'ttest好的', 'bkname': '红宝书', 'bkid': '1000000002', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 13, 59, 55)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 13:59:56] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:01:30] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000005')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000005',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000005","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 0, 'lists': []}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:01:34] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books 
+WHERE books.bkid = %s 
+ LIMIT %s
+INFO log.py:110 ('1000000005', 1)
+INFO log.py:110 INSERT INTO books_comment (create_time, update_time, sort, is_deleted, is_show, uid, uname, ccontent, bkname, bkid, uavatar, ctime) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 14, 1, 49, 930786), datetime.datetime(2020, 4, 27, 14, 1, 49, 930786), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '李鸿杰', '没有goumai购买也评论', '安徒生童话故事集', '1000000005', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', datetime.datetime(2020, 4, 27, 14, 1, 49, 930786))
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Comment.write","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01","content":"没有goumai购买也评论","bookid":"1000000005","formid":"the formId is no longer available in develop or trial version of this mini program"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': 0}
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:01:49] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000005')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000005',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000005","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 0, 'lists': [{'cmid': 4, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '没有goumai购买也评论', 'bkname': '安徒生童话故事集', 'bkid': '1000000005', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 1, 50)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:01:51] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:02:04] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000001')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000001',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000001","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 1, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '12313213testtest', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 34, 17)}, {'cmid': 2, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttttttt测试', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 19, 19)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:02:23] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books 
+WHERE books.bkid = %s 
+ LIMIT %s
+INFO log.py:110 ('1000000001', 1)
+INFO log.py:110 INSERT INTO books_comment (create_time, update_time, sort, is_deleted, is_show, uid, uname, ccontent, bkname, bkid, uavatar, ctime) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 14, 2, 57, 415491), datetime.datetime(2020, 4, 27, 14, 2, 57, 415491), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '李鸿杰', '再次评论123123ttt_', '深入浅出Node.js', '1000000001', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', datetime.datetime(2020, 4, 27, 14, 2, 57, 415491))
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Comment.write","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01","content":"再次评论123123ttt_","bookid":"1000000001","formid":"the formId is no longer available in develop or trial version of this mini program"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': 0}
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:02:57] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000001')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000001',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000001","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 1, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '12313213testtest', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 34, 17)}, {'cmid': 2, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttttttt测试', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 19, 19)}, {'cmid': 5, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '再次评论123123ttt_', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 2, 57)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:02:59] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books 
+WHERE books.bkid = %s 
+ LIMIT %s
+INFO log.py:110 ('1000000001', 1)
+INFO log.py:110 INSERT INTO books_comment (create_time, update_time, sort, is_deleted, is_show, uid, uname, ccontent, bkname, bkid, uavatar, ctime) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 14, 3, 13, 799280), datetime.datetime(2020, 4, 27, 14, 3, 13, 799280), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '李鸿杰', 'tttae', '深入浅出Node.js', '1000000001', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', datetime.datetime(2020, 4, 27, 14, 3, 13, 799280))
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Comment.write","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01","content":"tttae","bookid":"1000000001","formid":"the formId is no longer available in develop or trial version of this mini program"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': 0}
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:03:13] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000001')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000001',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000001","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 1, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '12313213testtest', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 34, 17)}, {'cmid': 2, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttttttt测试', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 19, 19)}, {'cmid': 5, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '再次评论123123ttt_', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 2, 57)}, {'cmid': 6, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttae', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 3, 14)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:03:15] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000001')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000001',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000001","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 1, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '12313213testtest', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 34, 17)}, {'cmid': 2, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttttttt测试', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 19, 19)}, {'cmid': 5, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '再次评论123123ttt_', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 2, 57)}, {'cmid': 6, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttae', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 3, 14)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:03:44] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122  * Detected change in 'D:\\github_Code\\wechat-app\\flask_window10\\application\\apps\\index\\api.py', reloading
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.getBooks","params":{"data":{"is_all":1}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': [{'author': '朴灵', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s27269296.jpg', 'file_url': '******** book file ********', 'book_id': 1000000001, 'book_name': '深入浅出Node.js', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': 'Nicholas C.Zakas', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s8958650.jpg', 'file_url': '******** book file ********', 'book_id': 1000000002, 'book_name': '红宝书', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': '东野奎吾', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s27264181.jpg', 'file_url': '******** book file ********', 'book_id': 1000000003, 'book_name': '解忧杂货店', 'book_price': 1, 'book_publisher': '南海出版公司'}, {'author': '曹雪芹', 'category': 2, 'cover_url': 'https://img1.doubanio.com/lpic/s1070959.jpg', 'file_url': '******** book file ********', 'book_id': 1000000004, 'book_name': '红楼梦', 'book_price': 1, 'book_publisher': '人民文学出版社'}, {'author': '汉斯·克里斯蒂安·安徒生 ', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s1034062.jpg', 'file_url': '******** book file ********', 'book_id': 1000000005, 'book_name': '安徒生童话故事集', 'book_price': 1, 'book_publisher': '人民文学出版社'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:09:19] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000004')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000004',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000004","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 0, 'lists': []}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:09:25] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books 
+WHERE books.bkid = %s 
+ LIMIT %s
+INFO log.py:110 ('1000000004', 1)
+INFO log.py:110 INSERT INTO books_comment (create_time, update_time, sort, is_deleted, is_show, uid, uname, ccontent, bkname, bkid, uavatar, ctime) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 14, 9, 37, 651908), datetime.datetime(2020, 4, 27, 14, 9, 37, 651908), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', '李鸿杰', '写个评论aaa', '红楼梦', '1000000004', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', datetime.datetime(2020, 4, 27, 14, 9, 37, 651908))
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Comment.write","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01","content":"写个评论aaa","bookid":"1000000004","formid":"the formId is no longer available in develop or trial version of this mini program"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'msg': '成功'}}
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:09:37] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000004')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000004',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000004","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 0, 'lists': [{'cmid': 7, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '写个评论aaa', 'bkname': '红楼梦', 'bkid': '1000000004', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 9, 38)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:09:39] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:10:23] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 14:15:37] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.getBooks","params":{"data":{"is_all":1}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': [{'author': '朴灵', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s27269296.jpg', 'file_url': '******** book file ********', 'book_id': 1000000001, 'book_name': '深入浅出Node.js', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': 'Nicholas C.Zakas', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s8958650.jpg', 'file_url': '******** book file ********', 'book_id': 1000000002, 'book_name': '红宝书', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': '东野奎吾', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s27264181.jpg', 'file_url': '******** book file ********', 'book_id': 1000000003, 'book_name': '解忧杂货店', 'book_price': 1, 'book_publisher': '南海出版公司'}, {'author': '曹雪芹', 'category': 2, 'cover_url': 'https://img1.doubanio.com/lpic/s1070959.jpg', 'file_url': '******** book file ********', 'book_id': 1000000004, 'book_name': '红楼梦', 'book_price': 1, 'book_publisher': '人民文学出版社'}, {'author': '汉斯·克里斯蒂安·安徒生 ', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s1034062.jpg', 'file_url': '******** book file ********', 'book_id': 1000000005, 'book_name': '安徒生童话故事集', 'book_price': 1, 'book_publisher': '人民文学出版社'}, {'author': '不详', 'category': 2, 'cover_url': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg', 'file_url': 'https://pan.baidu.com/s/1c02nbck', 'book_id': 1000000006, 'book_name': '山海经', 'book_price': 1, 'book_publisher': '浙江古籍出版社'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 17:56:47] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000006')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000006',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000006","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 0, 'lists': []}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 17:57:00] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books 
+WHERE books.bkid = %s
+INFO log.py:110 ('1000000006',)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 INSERT INTO orders (create_time, update_time, sort, is_deleted, is_show, uid, oprice, otime, gid) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 17, 57, 3, 428696), datetime.datetime(2020, 4, 27, 17, 57, 3, 428696), 0, 0, 1, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 1, datetime.datetime(2020, 4, 27, 17, 57, 3, 428696), '1000000006')
+INFO log.py:110 COMMIT
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.id = %s
+INFO log.py:110 (2,)
+INFO log.py:110 UPDATE users SET update_time=%s, ubalance=%s WHERE users.uid = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 17, 57, 3, 437571), 26, 'o1ccs5JLPhQJUvccd9z0jzSgzX9A')
+INFO log.py:110 COMMIT
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Order.buy","params":{"data":{"bookid":"1000000006","skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'msg': '兑换成功'}}
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 17:57:03] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'https://pan.baidu.com/s/1c02nbck', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 17:57:15] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('0812238c4a2bcb9583e3ffb204448f2c8cf64a01',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"0812238c4a2bcb9583e3ffb204448f2c8cf64a01"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'https://d11.baidupcs.com/file/7ef0d5932d3228a0e5218a4063d20f5a?bkt=en-3f603aaf96443402b184e7061db4fa1cafa12843e40c48e123fcebf28a43f97bcbff89d4370b913a008ed5515de1b75727c468970c20310a71f1360841e914fe&xcode=2c45d1c6b85f9ea53d4305a5b0fecded6472013f3f242337c040ec74372e80edd770bd33f0c1aff653d6bad130ef8f6f9a7e3ac4ae9d7ad8&fid=2483207920-250528-331329340990800&time=1587980836&sign=FDTAXUGERLQlBHSKf-DCb740ccc5511e5e8fedcff06b081203-ARwwqmMBc4edDWA9pBf+dGB3iJc=&to=d11&size=42710943&sta_dx=42710943&sta_cs=44398&sta_ft=pdf&sta_ct=7&sta_mt=7&fm2=MH,Qingdao,Anywhere,,guangdong,ct&ctime=1443682776&mtime=1443682776&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=42710943&vuk=154276142&iv=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ae54b19828f294094f3a6e64bf29708607452e7c6e078cbb2ce66c67af4787b2c8a015a604db773ea4a83c31473e8b2a37db1fb765f2f9cd305a5e1275657320&sl=76480590&expires=8h&rt=sh&r=771983484&vbdid=150224362&fin=山海经.pdf&fn=山海经.pdf&rtype=1&dp-logid=2730749818416174507&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=pG1D//t4JYAkZbedNcF6ych7+uA=&so=0&ut=6&uter=4&serv=0&uc=2483642215&ti=c4d909716469fa077f30a28deb8c898d77b9d7bd4d054ed7&adg=c_7495338dd6e63df503d6931a3d547634&reqlabel=250528_f_90f53134fef4050f8f3dc710f66ede79_-1_becc15cb5b9a29703860b64ebbe8e760&by=themis', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 18:36:56] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.getBooks","params":{"data":{"is_all":1}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': [{'author': '朴灵', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s27269296.jpg', 'file_url': '******** book file ********', 'book_id': 1000000001, 'book_name': '深入浅出Node.js', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': 'Nicholas C.Zakas', 'category': 3, 'cover_url': 'https://img3.doubanio.com/lpic/s8958650.jpg', 'file_url': '******** book file ********', 'book_id': 1000000002, 'book_name': '红宝书', 'book_price': 1, 'book_publisher': '人民邮电出版社'}, {'author': '东野奎吾', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s27264181.jpg', 'file_url': '******** book file ********', 'book_id': 1000000003, 'book_name': '解忧杂货店', 'book_price': 1, 'book_publisher': '南海出版公司'}, {'author': '曹雪芹', 'category': 2, 'cover_url': 'https://img1.doubanio.com/lpic/s1070959.jpg', 'file_url': '******** book file ********', 'book_id': 1000000004, 'book_name': '红楼梦', 'book_price': 1, 'book_publisher': '人民文学出版社'}, {'author': '汉斯·克里斯蒂安·安徒生 ', 'category': 1, 'cover_url': 'https://img3.doubanio.com/lpic/s1034062.jpg', 'file_url': '******** book file ********', 'book_id': 1000000005, 'book_name': '安徒生童话故事集', 'book_price': 1, 'book_publisher': '人民文学出版社'}, {'author': '不详', 'category': 2, 'cover_url': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg', 'file_url': 'https://d11.baidupcs.com/file/7ef0d5932d3228a0e5218a4063d20f5a?bkt=en-3f603aaf96443402b184e7061db4fa1cafa12843e40c48e123fcebf28a43f97bcbff89d4370b913a008ed5515de1b75727c468970c20310a71f1360841e914fe&xcode=2c45d1c6b85f9ea53d4305a5b0fecded6472013f3f242337c040ec74372e80edd770bd33f0c1aff653d6bad130ef8f6f9a7e3ac4ae9d7ad8&fid=2483207920-250528-331329340990800&time=1587980836&sign=FDTAXUGERLQlBHSKf-DCb740ccc5511e5e8fedcff06b081203-ARwwqmMBc4edDWA9pBf+dGB3iJc=&to=d11&size=42710943&sta_dx=42710943&sta_cs=44398&sta_ft=pdf&sta_ct=7&sta_mt=7&fm2=MH,Qingdao,Anywhere,,guangdong,ct&ctime=1443682776&mtime=1443682776&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=42710943&vuk=154276142&iv=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ae54b19828f294094f3a6e64bf29708607452e7c6e078cbb2ce66c67af4787b2c8a015a604db773ea4a83c31473e8b2a37db1fb765f2f9cd305a5e1275657320&sl=76480590&expires=8h&rt=sh&r=771983484&vbdid=150224362&fin=山海经.pdf&fn=山海经.pdf&rtype=1&dp-logid=2730749818416174507&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=pG1D//t4JYAkZbedNcF6ych7+uA=&so=0&ut=6&uter=4&serv=0&uc=2483642215&ti=c4d909716469fa077f30a28deb8c898d77b9d7bd4d054ed7&adg=c_7495338dd6e63df503d6931a3d547634&reqlabel=250528_f_90f53134fef4050f8f3dc710f66ede79_-1_becc15cb5b9a29703860b64ebbe8e760&by=themis', 'book_id': 1000000006, 'book_name': '山海经', 'book_price': 1, 'book_publisher': '浙江古籍出版社'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 18:37:19] "POST /api HTTP/1.1" 200 -
+DEBUG connectionpool.py:941 Starting new HTTPS connection (1): api.weixin.qq.com:443
+DEBUG connectionpool.py:442 https://api.weixin.qq.com:443 "GET /sns/jscode2session?appid=wxf34553e9cd1d35dd&secret=25d844c5c1445e15cecd9d9d7738cad6&js_code=023rLsvG0JSFBg2sR9yG0SCzvG0rLsvx&grant_type=authorization_code HTTP/1.1" 200 83
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.uname = %s
+INFO log.py:110 ('李鸿杰',)
+INFO log.py:110 UPDATE users SET update_time=%s, uname=%s, ugender=%s, uaddress=%s, uavatar=%s, skey=%s, sessionkey=%s WHERE users.uname = %s
+INFO log.py:110 (datetime.datetime(2020, 4, 27, 18, 37, 28, 723411), '李鸿杰', 1, 'Shenzhen', 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'b5f62af6b78515b480c7a041d9b76d45d6e02e22', 'GQ0FP/l6Eb08SmESYijObQ==', '李鸿杰')
+INFO log.py:110 COMMIT
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.id = %s
+INFO log.py:110 (2,)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.login","params":{"data":{"code":"023rLsvG0JSFBg2sR9yG0SCzvG0rLsvx","rawData":"{\"nickName\":\"李鸿杰\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Shenzhen\",\"province\":\"Guangdong\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132\"}","signature":"7426116a8d7ff140d29c2834931cc133d32bf657","encryptedData":"4x2CVYlbWEsbVD229L8hQABGiqx7/JHrPXysBYfDSyLWum+q9HZ1TMJy8LiU9kiGx1VWAVSiwFt5COgIvIXA7UQ5hJACNBomboGEy3IERVGEtAb7gCEsyU0LlkRn1zkgu0ODl4IEz8lH01zF/LTJunPSL/b05VgIJ778pslNFe+98kN+YszqC2PCaTCk0auzKuFUF43vAODdTlWZAP/KTqR8cTTqx4uB2kHF0kXeHhuzvlkSsnxAT+WTDDEapK5zBtCoZinVJJcFAoy7BcR42zr94aYBHbRmwROVATAL3ZwJ7wmd28m3snepEoK9A0Ad7OkI89bTj7OhwTqLij4RnaDUREksRpsQVGc/Uc3rxD/+nLUU1Cg4Z9WRx022e58EJZR+4Q4uLW9yuEoGIXrG+Kbd2WOO0l7CS7FuHmeO5yrv2Noz1hlA1y1K3AVKaXyhjB8cYQkLOEzfGOrHD9vsUVOsVApHvli0Ph329nHliAY=","iv":"SxwGvPtyC3RaEXp8UALxKA=="}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'userInfo': {'nickName': '李鸿杰', 'gender': 1, 'language': 'zh_CN', 'city': 'Guangdong,Shenzhen', 'province': 'Guangdong', 'country': 'China', 'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'balance': 26}, 'skey': 'b5f62af6b78515b480c7a041d9b76d45d6e02e22', 'result': 0}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 18:37:28] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'https://d11.baidupcs.com/file/7ef0d5932d3228a0e5218a4063d20f5a?bkt=en-3f603aaf96443402b184e7061db4fa1cafa12843e40c48e123fcebf28a43f97bcbff89d4370b913a008ed5515de1b75727c468970c20310a71f1360841e914fe&xcode=2c45d1c6b85f9ea53d4305a5b0fecded6472013f3f242337c040ec74372e80edd770bd33f0c1aff653d6bad130ef8f6f9a7e3ac4ae9d7ad8&fid=2483207920-250528-331329340990800&time=1587980836&sign=FDTAXUGERLQlBHSKf-DCb740ccc5511e5e8fedcff06b081203-ARwwqmMBc4edDWA9pBf+dGB3iJc=&to=d11&size=42710943&sta_dx=42710943&sta_cs=44398&sta_ft=pdf&sta_ct=7&sta_mt=7&fm2=MH,Qingdao,Anywhere,,guangdong,ct&ctime=1443682776&mtime=1443682776&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=42710943&vuk=154276142&iv=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ae54b19828f294094f3a6e64bf29708607452e7c6e078cbb2ce66c67af4787b2c8a015a604db773ea4a83c31473e8b2a37db1fb765f2f9cd305a5e1275657320&sl=76480590&expires=8h&rt=sh&r=771983484&vbdid=150224362&fin=山海经.pdf&fn=山海经.pdf&rtype=1&dp-logid=2730749818416174507&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=pG1D//t4JYAkZbedNcF6ych7+uA=&so=0&ut=6&uter=4&serv=0&uc=2483642215&ti=c4d909716469fa077f30a28deb8c898d77b9d7bd4d054ed7&adg=c_7495338dd6e63df503d6931a3d547634&reqlabel=250528_f_90f53134fef4050f8f3dc710f66ede79_-1_becc15cb5b9a29703860b64ebbe8e760&by=themis', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 18:37:30] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'https://d11.baidupcs.com/file/7ef0d5932d3228a0e5218a4063d20f5a?bkt=en-3f603aaf96443402b184e7061db4fa1cafa12843e40c48e123fcebf28a43f97bcbff89d4370b913a008ed5515de1b75727c468970c20310a71f1360841e914fe&xcode=2c45d1c6b85f9ea53d4305a5b0fecded6472013f3f242337c040ec74372e80edd770bd33f0c1aff653d6bad130ef8f6f9a7e3ac4ae9d7ad8&fid=2483207920-250528-331329340990800&time=1587980836&sign=FDTAXUGERLQlBHSKf-DCb740ccc5511e5e8fedcff06b081203-ARwwqmMBc4edDWA9pBf+dGB3iJc=&to=d11&size=42710943&sta_dx=42710943&sta_cs=44398&sta_ft=pdf&sta_ct=7&sta_mt=7&fm2=MH,Qingdao,Anywhere,,guangdong,ct&ctime=1443682776&mtime=1443682776&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=42710943&vuk=154276142&iv=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ae54b19828f294094f3a6e64bf29708607452e7c6e078cbb2ce66c67af4787b2c8a015a604db773ea4a83c31473e8b2a37db1fb765f2f9cd305a5e1275657320&sl=76480590&expires=8h&rt=sh&r=771983484&vbdid=150224362&fin=山海经.pdf&fn=山海经.pdf&rtype=1&dp-logid=2730749818416174507&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=pG1D//t4JYAkZbedNcF6ych7+uA=&so=0&ut=6&uter=4&serv=0&uc=2483642215&ti=c4d909716469fa077f30a28deb8c898d77b9d7bd4d054ed7&adg=c_7495338dd6e63df503d6931a3d547634&reqlabel=250528_f_90f53134fef4050f8f3dc710f66ede79_-1_becc15cb5b9a29703860b64ebbe8e760&by=themis', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 18:51:54] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000001')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000001',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000001","skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': [{'cmid': 1, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '12313213testtest', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 34, 17)}, {'cmid': 2, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttttttt测试', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 25, 5, 19, 19)}, {'cmid': 5, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '再次评论123123ttt_', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 2, 57)}, {'cmid': 6, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': 'tttae', 'bkname': '深入浅出Node.js', 'bkid': '1000000001', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 3, 14)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 18:52:08] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000005')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000005',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000005","skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 0, 'lists': [{'cmid': 4, 'uid': 'o1ccs5JLPhQJUvccd9z0jzSgzX9A', 'uname': '李鸿杰', 'ccontent': '没有goumai购买也评论', 'bkname': '安徒生童话故事集', 'bkid': '1000000005', 'uavatar': 'https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132', 'ctime': datetime.datetime(2020, 4, 27, 14, 1, 50)}]}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 19:52:27] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'https://d11.baidupcs.com/file/7ef0d5932d3228a0e5218a4063d20f5a?bkt=en-3f603aaf96443402b184e7061db4fa1cafa12843e40c48e123fcebf28a43f97bcbff89d4370b913a008ed5515de1b75727c468970c20310a71f1360841e914fe&xcode=2c45d1c6b85f9ea53d4305a5b0fecded6472013f3f242337c040ec74372e80edd770bd33f0c1aff653d6bad130ef8f6f9a7e3ac4ae9d7ad8&fid=2483207920-250528-331329340990800&time=1587980836&sign=FDTAXUGERLQlBHSKf-DCb740ccc5511e5e8fedcff06b081203-ARwwqmMBc4edDWA9pBf+dGB3iJc=&to=d11&size=42710943&sta_dx=42710943&sta_cs=44398&sta_ft=pdf&sta_ct=7&sta_mt=7&fm2=MH,Qingdao,Anywhere,,guangdong,ct&ctime=1443682776&mtime=1443682776&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=42710943&vuk=154276142&iv=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ae54b19828f294094f3a6e64bf29708607452e7c6e078cbb2ce66c67af4787b2c8a015a604db773ea4a83c31473e8b2a37db1fb765f2f9cd305a5e1275657320&sl=76480590&expires=8h&rt=sh&r=771983484&vbdid=150224362&fin=山海经.pdf&fn=山海经.pdf&rtype=1&dp-logid=2730749818416174507&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=pG1D//t4JYAkZbedNcF6ych7+uA=&so=0&ut=6&uter=4&serv=0&uc=2483642215&ti=c4d909716469fa077f30a28deb8c898d77b9d7bd4d054ed7&adg=c_7495338dd6e63df503d6931a3d547634&reqlabel=250528_f_90f53134fef4050f8f3dc710f66ede79_-1_becc15cb5b9a29703860b64ebbe8e760&by=themis', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 19:52:33] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'https://d11.baidupcs.com/file/7ef0d5932d3228a0e5218a4063d20f5a?bkt=en-3f603aaf96443402b184e7061db4fa1cafa12843e40c48e123fcebf28a43f97bcbff89d4370b913a008ed5515de1b75727c468970c20310a71f1360841e914fe&xcode=2c45d1c6b85f9ea53d4305a5b0fecded6472013f3f242337c040ec74372e80edd770bd33f0c1aff653d6bad130ef8f6f9a7e3ac4ae9d7ad8&fid=2483207920-250528-331329340990800&time=1587980836&sign=FDTAXUGERLQlBHSKf-DCb740ccc5511e5e8fedcff06b081203-ARwwqmMBc4edDWA9pBf+dGB3iJc=&to=d11&size=42710943&sta_dx=42710943&sta_cs=44398&sta_ft=pdf&sta_ct=7&sta_mt=7&fm2=MH,Qingdao,Anywhere,,guangdong,ct&ctime=1443682776&mtime=1443682776&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=42710943&vuk=154276142&iv=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ae54b19828f294094f3a6e64bf29708607452e7c6e078cbb2ce66c67af4787b2c8a015a604db773ea4a83c31473e8b2a37db1fb765f2f9cd305a5e1275657320&sl=76480590&expires=8h&rt=sh&r=771983484&vbdid=150224362&fin=山海经.pdf&fn=山海经.pdf&rtype=1&dp-logid=2730749818416174507&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=pG1D//t4JYAkZbedNcF6ych7+uA=&so=0&ut=6&uter=4&serv=0&uc=2483642215&ti=c4d909716469fa077f30a28deb8c898d77b9d7bd4d054ed7&adg=c_7495338dd6e63df503d6931a3d547634&reqlabel=250528_f_90f53134fef4050f8f3dc710f66ede79_-1_becc15cb5b9a29703860b64ebbe8e760&by=themis', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 19:52:53] "POST /api HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:05:42] "GET / HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:05:44] "GET /favicon.ico HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:05:52] "GET /appliation HTTP/1.1" 404 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:06:20] "GET /application HTTP/1.1" 404 -
+INFO _internal.py:122  * Detected change in 'D:\\github_Code\\wechat-app\\flask_window10\\manage.py', reloading
+INFO _internal.py:122  * Restarting with stat
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:05] "GET / HTTP/1.1" 500 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:06] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:06] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:06] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:06] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:06] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:12:07] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO _internal.py:122  * Detected change in 'D:\\github_Code\\wechat-app\\flask_window10\\manage.py', reloading
+INFO _internal.py:122  * Restarting with stat
+WARNING _internal.py:122  * Debugger is active!
+INFO _internal.py:122  * Debugger PIN: 100-423-484
+INFO _internal.py:122  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO log.py:110 SHOW VARIABLES LIKE 'sql_mode'
+INFO log.py:110 ()
+INFO log.py:110 SHOW VARIABLES LIKE 'lower_case_table_names'
+INFO log.py:110 ()
+INFO log.py:110 SELECT DATABASE()
+INFO log.py:110 ()
+INFO log.py:110 show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+INFO log.py:110 ()
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'http://127.0.0.1:5002/downloadfile?filename=ttest.pdf', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:23:09] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s AND orders.gid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A', '1000000006')
+INFO log.py:110 SELECT books_comment.create_time AS books_comment_create_time, books_comment.update_time AS books_comment_update_time, books_comment.sort AS books_comment_sort, books_comment.is_deleted AS books_comment_is_deleted, books_comment.is_show AS books_comment_is_show, books_comment.cmid AS books_comment_cmid, books_comment.uid AS books_comment_uid, books_comment.uname AS books_comment_uname, books_comment.ccontent AS books_comment_ccontent, books_comment.bkname AS books_comment_bkname, books_comment.bkid AS books_comment_bkid, books_comment.uavatar AS books_comment_uavatar, books_comment.ctime AS books_comment_ctime 
+FROM books_comment 
+WHERE books_comment.bkid = %s
+INFO log.py:110 ('1000000006',)
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"Book.queryBook","params":{"data":{"bookid":"1000000006","skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'data': {'is_buy': 1, 'lists': []}}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:23:31] "POST /api HTTP/1.1" 200 -
+INFO log.py:110 BEGIN (implicit)
+INFO log.py:110 SELECT users.create_time AS users_create_time, users.update_time AS users_update_time, users.sort AS users_sort, users.is_deleted AS users_is_deleted, users.is_show AS users_is_show, users.id AS users_id, users.uid AS users_uid, users.uname AS users_uname, users.ugender AS users_ugender, users.uaddress AS users_uaddress, users.ubalance AS users_ubalance, users.uavatar AS users_uavatar, users.skey AS users_skey, users.sessionkey AS users_sessionkey 
+FROM users 
+WHERE users.skey = %s
+INFO log.py:110 ('b5f62af6b78515b480c7a041d9b76d45d6e02e22',)
+INFO log.py:110 SELECT orders.create_time AS orders_create_time, orders.update_time AS orders_update_time, orders.sort AS orders_sort, orders.is_deleted AS orders_is_deleted, orders.is_show AS orders_is_show, orders.oid AS orders_oid, orders.uid AS orders_uid, orders.oprice AS orders_oprice, orders.otime AS orders_otime, orders.gid AS orders_gid 
+FROM orders 
+WHERE orders.uid = %s
+INFO log.py:110 ('o1ccs5JLPhQJUvccd9z0jzSgzX9A',)
+INFO log.py:110 SELECT books.create_time AS books_create_time, books.update_time AS books_update_time, books.sort AS books_sort, books.is_deleted AS books_is_deleted, books.is_show AS books_is_show, books.bkid AS books_bkid, books.bkclass AS books_bkclass, books.bkname AS books_bkname, books.bkauthor AS books_bkauthor, books.bkpublisher AS books_bkpublisher, books.bkfile AS books_bkfile, books.bkcover AS books_bkcover, books.bkprice AS books_bkprice 
+FROM books
+INFO log.py:110 ()
+DEBUG __init__.py:168 request: {"jsonrpc":"2.0","id":1,"method":"User.getBoughtBooks","params":{"data":{"skey":"b5f62af6b78515b480c7a041d9b76d45d6e02e22"}}}
+DEBUG __init__.py:169 response: 200, {'id': 1, 'jsonrpc': '2.0', 'result': {'result': 0, 'list': [{'bkid': 1000000001, 'bkname': '深入浅出Node.js', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s27269296.jpg'}, {'bkid': 1000000002, 'bkname': '红宝书', 'bkfile': '******** book file ********', 'bkcover': 'https://img3.doubanio.com/lpic/s8958650.jpg'}, {'bkid': 1000000006, 'bkname': '山海经', 'bkfile': 'http://127.0.0.1:5002/downloadfile?filename=ttest.pdf', 'bkcover': 'http://pdfzj.cn/uploadfile/2015/0413/20150413103336347.jpg'}]}}
+INFO log.py:110 ROLLBACK
+INFO _internal.py:122 127.0.0.1 - - [27/Apr/2020 20:52:25] "POST /api HTTP/1.1" 200 -

@@ -45,14 +45,12 @@ def user_login(data):
     print('-------------skey---------------')
     print(skey)
     print('-------------skey---------------')
-    # 通过腾讯提供的通用工具类WXBizDataCrypt，将小程序端传入的用户加密信息解密
-    # 得到用户信息明文
+    # 通过腾讯提供的通用工具类WXBizDataCrypt，将小程序端传入的用户加密信息解密，得到用户信息明文
     pc = WXBizDataCrypt(appConfig["appid"], resp["session_key"])
     decryptedData = pc.decrypt(data["encryptedData"], data["iv"])
     print('-------------decryptedData---------------')
     print(decryptedData)
     print('-------------decryptedData---------------')
-
 
     # 查询数据库信息，判断用户是否已经存在
     m_user = UsersWechart.query.filter(
@@ -217,7 +215,7 @@ def Order_buy(data):
     :return:
     """
     print(data)
-    # 获取当前书籍的积分价值
+    # 获取兑换当前书籍需要的积分值
     m_res_books = Books.query.filter(Books.bkid == data["bookid"]).all()
     m_price = m_res_books[0].bkprice
     print(m_price)
@@ -236,10 +234,32 @@ def Order_buy(data):
         db.session.commit()  # 提交执行
     else:
         return {"result": -4, "errmsg": '余额不足，无法购买'}
-    m_res_update = db.session.query(UsersWechart).filter(UsersWechart.uid == m_res_user[0].uid).update({"ubalance" : m_user_ublance - m_price})
+    m_res_update = db.session.query(UsersWechart).filter(
+        UsersWechart.uid == m_res_user[0].uid).update({"ubalance": m_user_ublance - m_price})
     db.session.commit()
     print(m_res_update)
-    return {"result":0,"msg":"兑换成功"}
+    return {"result": 0, "msg": "兑换成功"}
+
+
+@jsonrpc.method("Comment.write(data=dict)")
+def Comment_write(data):
+    print(data)
+    # 通过客户端传过来的skey得到用户信息
+    m_res_user = UsersWechart.query.filter(
+        UsersWechart.skey == data["skey"]).all()
+    # 通过客户端传过来的bookid得到书籍信息
+    m_res_bookinfo = Books.query.filter(Books.bkid == data["bookid"])
+    comment = BooksComment(
+        uid=m_res_user[0].uid,
+        uname=m_res_user[0].uname,
+        uavatar=m_res_user[0].uavatar,
+        bkid=data["bookid"],
+        bkname=m_res_bookinfo[0].bkname,
+        ccontent=data["content"])
+    db.session.add(comment)  # 添加
+    db.session.commit()  # 提交执行
+
+    return {"result": 0, "msg": "成功"}
 
 
 @jsonrpc.method("User.list(username=String)")

@@ -96,24 +96,39 @@ Page({
             };
 
             wx.request({
-                url: api.commentUrl,
-                method: 'POST',
+                url: api.jsonRpcUrl,
                 data: requestData,
+				data: {
+				  "jsonrpc": "2.0",
+				  "id": 1,
+				  "method": "Comment.write",
+				  "params": {
+					"data" :requestData
+				  }
+				},
+				header: {},
+				method: 'POST',
+				dataType: 'json',
+				responseType: 'text',
                 success: function(res) {
                     // 接口返回成功
-                    if (res.data.result == 0) {
-                        that.showInfo('评论成功', 'success', function() {
-                            wx.setStorageSync('isFromBack', '1');
-                            setTimeout(function() {
-                                wx.navigateBack({
-                                    delta: 1
-                                });
-                            }, 1500);
-                        });
-                    } else {
-                        console.log(res.data);
-                        that.showInfo(res.data.errmsg);
-                    }
+					if(res.data.hasOwnProperty("result")){
+						let data = res.data.result;
+						console.debug("server resp data:", data);
+						if (data.result == 0) {
+							that.showInfo('评论成功', 'success', function() {
+								wx.setStorageSync('isFromBack', '1');
+								setTimeout(function() {
+									wx.navigateBack({
+										delta: 1
+									});
+								}, 1500);
+							});
+						}	
+					}
+					else if(res.data.hasOwnProperty("error")){
+						console.error("server error:", res.data.error);
+					}
 
                 },
                 fail: function(error) {

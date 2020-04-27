@@ -20,7 +20,6 @@ Migrate(app, db)
 # 添加数据迁移的命令到终端脚本工具中
 manager.add_command('db', MigrateCommand)
 
-
 if __name__ == '__main__':
 
     manager.run()

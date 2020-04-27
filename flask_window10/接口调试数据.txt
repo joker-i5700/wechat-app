@@ -212,3 +212,17 @@ http://127.0.0.1:3003/api/order/buy
 
 {"result":0,"errmsg":"兑换成功"}
 
+http://127.0.0.1:3003/api/order/buy
+{"bookid":"1000000002","skey":"86bb7c47e0e72555a880d52f0d85fdf56ef49155"}
+
+{"result":0,"errmsg":"兑换成功"}
+
+
+{"avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/VAJkqibsibjyMibSOicueyd6slib3RnmddTC6HH4t4todebKovxBGXaAhov6LNib3oO7L70rmbBP6XFejhKTUJ4FUsRQ/132","balance":30,"city":"Guangdong,Shenzhen","country":"China","gender":1,"language":"zh_CN","nickName":"李鸿杰","province":"Guangdong"}
+
+https://img3.doubanio.com/lpic/s27269296.jpg
+
+
+http://127.0.0.1:5002/downloadfile?filename=ttest.pdf
+微信小程序下载文件后临时存放目录
+C:\Users\root\AppData\Local\微信开发者工具\User Data\WeappFileSystem\o6zAJs4fG2GBkgZL0ImnPhkP51pY\wxf34553e9cd1d35dd\tmp
